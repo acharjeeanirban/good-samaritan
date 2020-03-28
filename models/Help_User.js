@@ -6,12 +6,16 @@ const HelpUserSchema = new Schema({
         type: String,
         required: true
     },
+    age: {
+        type: Number,
+        required: true
+    },
     email: {
         type:String,
         requred: true,
         unique: true
     },
-    passoword: {
+    password: {
         type: String,
         required: true
     },
@@ -23,14 +27,15 @@ const HelpUserSchema = new Schema({
         type: String,
         required: true
     },
-    zipcode: {
+    city: {
         type: String,
         required: true
     },
-    age: {
-        type: Number,
+    zipcode: {
+        type: String,
         required: true
     }
+
 });
 
 
