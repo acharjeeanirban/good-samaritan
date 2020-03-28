@@ -30,4 +30,4 @@ const VolUserSchema = new Schema({
 });
 
 
-module.exports = VolUser = mongoose.model('helpuser', VolUserSchema);
+module.exports = VolUser = mongoose.model('VolUser', VolUserSchema);
