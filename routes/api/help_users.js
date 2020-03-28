@@ -13,13 +13,6 @@ router.get('/', (req, res) => {
     res.send('help user route');
 });
 
-// router.post('/register', (req, res) => {
-
-//     console.log(req.body);
-//     return res.send('register req has been called');
-
-// });
-
 //register user
 router.post('/register',
     [
@@ -33,6 +26,7 @@ router.post('/register',
         ).isLength({ min: 6 }),
         check('country', 'Country is required').not().isEmpty(),
         check('province', 'province is required').not().isEmpty(),
+        check('city', 'city is required').not().isEmpty(),
         check('zipcode', 'zipcode is required').not().isEmpty(),
         check('age', 'age is required').not().isEmpty()
     ],
@@ -78,25 +72,25 @@ router.post('/register',
 
             console.log("bazinga 2");
 
-            return res.status(200).json({
-                'msg':'User succesfully registered'});
+            // return res.status(200).json({
+            //     'msg':'User succesfully registered'});
 
 
-            // const payload = {
-            //     user: {
-            //       id: user.id
-            //     }
-            //   };
+            const payload = {
+                user: {
+                  id: user.id
+                }
+              };
         
-            // jwt.sign(
-            //     payload,
-            //     config.get('jwtSecret'),
-            //     { expiresIn: 360000 },
-            //     (err, token) => {
-            //         if (err) throw err;
-            //         res.json({ token });
-            //     }
-            // );
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                { expiresIn: 360000 },
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });
+                }
+            );
 
         } catch(err) {
             console.error(err.message);
