@@ -1,33 +1,16 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+const {check, validationResult} = require('express-validator');
 
-const VolUserSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type:String,
-        requred: true,
-        unique: true
-    },
-    passoword: {
-        type: String,
-        required: true
-    },
-    country: {
-        type: String,
-        required: true
-    },
-    province: {
-        type: String,
-        required: true
-    },
-    zipcode: {
-        type: String,
-        required: true
-    }
-});
+const Help_User = require('../../models/Help_user');
 
+// @route GET api/Help_Users
+// @desc Test route
+router.get('/', (req, res) => {
+    res.send('vol user route');
+})
 
-module.exports = VolUser = mongoose.model('VolUser', VolUserSchema);
+module.exports = router;
