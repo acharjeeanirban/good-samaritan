@@ -38,7 +38,6 @@ const HelpUserSchema = new Schema({
 
 });
 
-
 module.exports = HelpUser = mongoose.model('HelpUser', HelpUserSchema);
 
 
