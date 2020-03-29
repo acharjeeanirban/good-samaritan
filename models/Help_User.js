@@ -6,10 +6,6 @@ const HelpUserSchema = new Schema({
         type: String,
         required: true
     },
-    age: {
-        type: Number,
-        required: true
-    },
     email: {
         type:String,
         requred: true,

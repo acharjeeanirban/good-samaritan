@@ -2,19 +2,22 @@ const mongoose = require('mongoose');
 
 const VolProfileSchema = new mongoose.Schema({
 
-    user: {
-        type: String,
-        required: true
+    bio: {
+        type: String
+    },
+    age: {
+        type: Number
+    },
+    phone: {
+        type: String
+    },
+    helping_user: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'HelpUserProfile'
+    },
+    is_active: {
+        type: Boolean
     }
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'VolUser'
-    // }
-    // ,
-    // vol_profs: {
-    //     type: [VolUser],
-    //     ref: 'VolUser'
-    // }
 
 });
 

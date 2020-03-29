@@ -27,8 +27,7 @@ router.post('/register',
         check('country', 'Country is required').not().isEmpty(),
         check('province', 'province is required').not().isEmpty(),
         check('city', 'city is required').not().isEmpty(),
-        check('zipcode', 'zipcode is required').not().isEmpty(),
-        check('age', 'age is required').not().isEmpty()
+        check('zipcode', 'zipcode is required').not().isEmpty()
     ],
 
     async (req, res) => {
@@ -40,7 +39,7 @@ router.post('/register',
 
         console.log(req.body);
 
-        const { name,age, email, password, country, province,city, zipcode } = req.body;
+        const { name, email, password, country, province,city, zipcode } = req.body;
 
         try {
             
@@ -54,7 +53,6 @@ router.post('/register',
 
             user = new Help_User({
                 name,
-                age,
                 email,
                 password,
                 country,
