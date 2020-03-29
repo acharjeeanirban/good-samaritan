@@ -11,10 +11,10 @@ const VolProfileSchema = new mongoose.Schema({
     phone: {
         type: String
     },
-    helping_user: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: 'HelpUserProfile'
-    },
+    helping_user: [{
+        helpee_id: {type: mongoose.Schema.Types.ObjectId, ref: 'HelpUserProfile'},
+        status: {type: String, required: true}
+    }],
     is_active: {
         type: Boolean
     }
