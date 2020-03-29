@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const VolProfileSchema = new mongoose.Schema({
 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'VolUser'
+    },
     bio: {
         type: String
     },

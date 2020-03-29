@@ -4,8 +4,13 @@ const mongoose = require('mongoose');
 
 const HelpProfileSchema = new mongoose.Schema({
 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'HelpUser'
+    },
     bio: {
-        type: String
+        type: String,
+        required: true
     },
     age: {
         type: Number
