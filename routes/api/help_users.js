@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const {check, validationResult} = require('express-validator/check');
+const {check, validationResult} = require('express-validator');
 
 const Help_User = require('../../models/Help_User');
 
@@ -98,7 +98,7 @@ router.post('/register',
 
     }
 
-)
+);
 
 
 module.exports = router;
