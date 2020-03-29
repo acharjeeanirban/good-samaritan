@@ -3,3 +3,10 @@ npx create-react-app client
 
 react deps:
 npm i axios react-router-dom redux react-redux redux-thunk redux-devtools-extension moment react-moment
+
+racf enter -> create react component
+
+todo:
+1. font awesome - index.html : https://fontawesome.com/
+
+
