@@ -34,7 +34,8 @@ router.get('/me', auth, async (req, res) => {
 // @route POST api/help_profile/
 // @desc    Post User profile
 // @access  Public
-router.post('/', [auth,
+router.post('/', [
+    auth,
     check('bio', 'bio is required').not().isEmpty()
 ], async (req, res) => {
 
@@ -45,7 +46,48 @@ router.post('/', [auth,
 
     console.log(req.body);
 
-    
+    const {
+        bio,
+        age,
+        phone,
+        emergency_contact,
+        emergency_contact_num,
+        help_needed_with
+    } = req.body;
+
+    const profileFields = {
+        user: req.user.id,
+        bio,
+        phone,
+        emergency_contact,
+        emergency_contact_num,
+        help_needed_with,
+        is_active: true
+    };
+
+    try {
+        let profile = await HelpUserProfile.findOne({user: req.user.id});
+
+        //update
+        if (profile) {
+            profile = await HelpUserProfile.findOneAndUpdate(
+                {user: req.user.id},
+                {$set: profileFields},
+                {new: true}
+            );
+
+            return res.json(profile);
+        }
+
+        //create
+        profile = new HelpUserProfile(profileFields);
+        await profile.save();
+        return res.json(profile);
+    } catch(err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
 });
 
 
