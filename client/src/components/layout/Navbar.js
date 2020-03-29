@@ -8,6 +8,7 @@ export const Navbar = () => {
             </h1>
             <ul>
                 <li><a href="login.html">Login</a></li>
+                <li><a href="login.html">Volunteer Login </a></li>
             </ul>
         </nav>
     )
