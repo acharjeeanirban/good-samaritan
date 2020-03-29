@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export const Landing = () => {
     return (
@@ -13,8 +14,8 @@ export const Landing = () => {
                         and healthy people in our society to come forward to help the vulnerable.
                     </p>
                     <div className="buttons">
-                        <a href="register.html" className="btn btn-primary">Sign Up as a Volunteer</a>
-                        <a href="register.html" className="btn btn-primary">Sign Up as someone who needs help</a>
+                        <Link to="/register_helpee" className="btn btn-primary">Sign Up as someone who needs help</Link>
+                        <Link to="/register_volunteer" className="btn btn-primary">Sign Up as a Volunteer</Link>
                     </div>
                 </div>
             </div>
