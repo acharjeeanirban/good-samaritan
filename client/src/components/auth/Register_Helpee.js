@@ -1,20 +1,25 @@
 import React, { Fragment, useState } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 
-export const Register_Helpee = () => {
+
+const Register_Helpee = ({ setAlert }) => {
 
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
 		password: '',
+		password2: '',
 		country: '',
 		province: '',
 		city: '',
 		zipcode: ''
 	});
 	
-	const { name, email, password, country, province, city, zipcode } = formData;
+	const { name, email, password,password2, country, province, city, zipcode } = formData;
 
 	const onChange = e =>
 	setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,7 +27,11 @@ export const Register_Helpee = () => {
 	const onSubmit = async e => {
 
 		e.preventDefault();
-		
+
+		if (password !== password2) {
+			setAlert('Passwords do not match', 'danger');
+		}
+
 		// const newUser = {
 		// 	name,
 		// 	email,
@@ -85,6 +94,15 @@ export const Register_Helpee = () => {
 						required
 					/>
 				</div>
+				<div className='form-group'>
+					<input
+						type='password'
+						placeholder='Confirm Password'
+						name='password2'
+						value={password2}
+						onChange={e => onChange(e)}
+					/>
+        		</div>
 				<div className="form-group">
 					<input type="text" placeholder="Country" name="country" 
 						value={country}
@@ -118,3 +136,11 @@ export const Register_Helpee = () => {
 		</Fragment>
 	);
 };
+
+Register_Helpee.propTypes = {
+	setAlert: PropTypes.func.isRequired,
+//	register: PropTypes.func.isRequired,
+	//isAuthenticated: PropTypes.bool
+};
+
+export default connect(null, { setAlert })(Register_Helpee);
