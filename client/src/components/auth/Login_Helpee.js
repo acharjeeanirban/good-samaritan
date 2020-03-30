@@ -1,8 +1,11 @@
 import React, { Fragment, useState } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth'
 
-export const Login_Helpee = () => {
+const Login_Helpee = ({ login }) => {
 
 	const [formData, setFormData] = useState({
 
@@ -17,8 +20,8 @@ export const Login_Helpee = () => {
 	setFormData({ ...formData, [e.target.name]: e.target.value });
 	
 	const onSubmit = async e => {
-
 		e.preventDefault();
+		login(email, password)
 
 	}
 
@@ -53,3 +56,9 @@ export const Login_Helpee = () => {
 		</Fragment>
 	);
 };
+
+Login_Helpee.propTypes = {
+	login: PropTypes.func.isRequired
+}
+
+export default connect(null, { login })(Login_Helpee);

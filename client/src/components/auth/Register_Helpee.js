@@ -3,10 +3,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 
-const Register_Helpee = ({ setAlert }) => {
+const Register_Helpee = ({ setAlert, register }) => {
 
 	const [formData, setFormData] = useState({
 		name: '',
@@ -29,39 +30,10 @@ const Register_Helpee = ({ setAlert }) => {
 		e.preventDefault();
 
 		if (password !== password2) {
-			setAlert('Passwords do not match', 'danger');
+			setAlert('Passwords do not match', 'danger', 2000);
+		} else {
+			register({ name, email, password,password2, country, province, city, zipcode })
 		}
-
-		// const newUser = {
-		// 	name,
-		// 	email,
-		// 	password,
-		// 	country,
-		// 	province,
-		// 	city,
-		// 	zipcode
-		// };
-
-		// try {
-			
-		// 	const config = {
-		// 		headers: {
-		// 			'Content-type': 'application/json'
-		// 		}
-		// 	}
-
-		// 	const body = JSON.stringify(newUser);
-
-		// 	const res = await axios.post('/api/help_users/register', body, config);
-
-		// 	// this is the token
-		// 	console.log(res.data);
-
-		// } catch(err) {
-		// 	console.error(err.response.data);
-
-		// }
-		//console.log(email);
 
 	}
 
@@ -139,8 +111,8 @@ const Register_Helpee = ({ setAlert }) => {
 
 Register_Helpee.propTypes = {
 	setAlert: PropTypes.func.isRequired,
-//	register: PropTypes.func.isRequired,
+	register: PropTypes.func.isRequired
 	//isAuthenticated: PropTypes.bool
 };
 
-export default connect(null, { setAlert })(Register_Helpee);
+export default connect(null, { setAlert, register })(Register_Helpee);

@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Landing } from './components/layout/Landing';
 import { Navbar } from './components/layout/Navbar';
-import { Login_Helpee } from './components/auth/Login_Helpee';
+import Login_Helpee from './components/auth/Login_Helpee';
 //import { Register_Helpee } from './components/auth/Register_Helpee';
 import Register_Helpee from './components/auth/Register_Helpee';
 import { Login_Volunteer } from './components/auth/Login_Volunteer';
@@ -12,11 +12,24 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider }  from 'react-redux';
 import store  from './store';
 import Alert from './components/layout/Alert';
-
+import setAuthToken from './utils/setAuthToken';
+import { loadUser } from './actions/auth';
 
 import './App.css';
 
-const App = () => 
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+const App = () => {
+
+  useEffect(() => {
+    setAuthToken(localStorage.token);
+    store.dispatch(loadUser());
+  }, []);
+
+  
+  return (
   <Provider store={store}>
     <Router>
       <Fragment>
@@ -35,5 +48,7 @@ const App = () =>
       </Fragment>
     </Router>
   </Provider>
+  );
+};
 
 export default App;
