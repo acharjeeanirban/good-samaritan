@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from "react";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth'
 
-const Login_Helpee = ({ login }) => {
+const Login_Helpee = ({ login, isAuthenticated }) => {
 
 	const [formData, setFormData] = useState({
 
@@ -21,8 +21,12 @@ const Login_Helpee = ({ login }) => {
 	
 	const onSubmit = async e => {
 		e.preventDefault();
-		login(email, password)
+		login(email, password);
+	};
 
+	//Redirect if logged in
+	if (isAuthenticated) {
+		return <Redirect to='/helpee_dashboard' />
 	}
 
 	return (
@@ -58,7 +62,12 @@ const Login_Helpee = ({ login }) => {
 };
 
 Login_Helpee.propTypes = {
-	login: PropTypes.func.isRequired
+	login: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, { login })(Login_Helpee);
+const mapStateToProps = state => ({
+	isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(Login_Helpee);

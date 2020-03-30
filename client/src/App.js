@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { Landing } from './components/layout/Landing';
-import { Navbar } from './components/layout/Navbar';
+import Navbar from './components/layout/Navbar';
 import Login_Helpee from './components/auth/Login_Helpee';
 //import { Register_Helpee } from './components/auth/Register_Helpee';
 import Register_Helpee from './components/auth/Register_Helpee';

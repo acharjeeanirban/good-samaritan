@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from "react";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 
-const Register_Helpee = ({ setAlert, register }) => {
+const Register_Helpee = ({ setAlert, register, isAuthenticated }) => {
 
 	const [formData, setFormData] = useState({
 		name: '',
@@ -35,6 +35,11 @@ const Register_Helpee = ({ setAlert, register }) => {
 			register({ name, email, password,password2, country, province, city, zipcode })
 		}
 
+	}
+
+	//Redirect if logged in
+	if (isAuthenticated) {
+		return <Redirect to='/helpee_dashboard' />
 	}
 
 	return (
@@ -111,8 +116,12 @@ const Register_Helpee = ({ setAlert, register }) => {
 
 Register_Helpee.propTypes = {
 	setAlert: PropTypes.func.isRequired,
-	register: PropTypes.func.isRequired
-	//isAuthenticated: PropTypes.bool
+	register: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.bool
 };
 
-export default connect(null, { setAlert, register })(Register_Helpee);
+const mapStateToProps = state => ({
+	isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register_Helpee);
