@@ -33,6 +33,12 @@ const HelpProfileSchema = new mongoose.Schema({
     }],
     is_active: {
         type: Boolean
+    },
+    notes: {
+        type: String
+    },
+    current_status: {
+        type: String
     }
 
 });

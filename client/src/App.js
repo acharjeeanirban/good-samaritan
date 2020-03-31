@@ -16,6 +16,7 @@ import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
 import HelpeeDashboard from './components/dashboards/HelpeeDashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
+import CreateHelpeeProfile from './components/profile-form/CreateHelpeeProfile';
 
 import './App.css';
 
@@ -46,6 +47,7 @@ const App = () => {
             <Route exact path="/login_volunteer" component={Login_Volunteer}></Route>
             <Route exact path="/about_us" component={About_Us}></Route>
             <PrivateRoute exact path="/helpee_dashboard" component={HelpeeDashboard}></PrivateRoute>
+            <PrivateRoute exact path="/create_helpee_profile" component={CreateHelpeeProfile}></PrivateRoute>
           </Switch>
         </section>
       </Fragment>

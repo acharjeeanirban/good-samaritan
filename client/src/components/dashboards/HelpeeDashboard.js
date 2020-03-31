@@ -3,14 +3,32 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/helpee_profile';
 import Spinner from '../layout/Spinner';
+import { Link } from 'react-router-dom';
 
-const HelpeeDashboard = ({ getCurrentProfile, auth, profile: { profile, loading } }) => {
+const HelpeeDashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
 
     useEffect(() => {
         getCurrentProfile();
     }, []);
 
-    return loading && profile === null ? <Spinner /> : <Fragment>bazinga - {profile.user}</Fragment>
+    return loading && profile === null ? <Spinner /> : <Fragment>
+        
+        <h1 className='large text-primary'>Dashboard</h1>
+        <p className='lead'>
+            <i className='fas fa-user'></i> Welcome { user && user.name }
+        </p>
+        { profile !== null ? <Fragment>has</Fragment> : 
+            <Fragment>
+
+                <p>You have not set up a profile, please add some info.</p>
+
+                <Link to='/create_helpee_profile' className='btn btn-primary my-1'>
+                    Create Profile
+                </Link>
+            
+            </Fragment>}
+        
+        </Fragment>
 }
 
 HelpeeDashboard.propTypes = {

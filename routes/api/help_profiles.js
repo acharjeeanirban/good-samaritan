@@ -20,8 +20,8 @@ router.get('/me', auth, async (req, res) => {
         // ['name']);
 
         const profile = await HelpUserProfile.findOne({
-            //user: req.user.id
-            user: '5e800de72903633889fb3589'
+            user: req.user.id
+            //user: '5e800de72903633889fb3589'
         });
         console.log("TADA bazinga 2");
         console.log(profile);
@@ -74,12 +74,14 @@ router.post('/', [
 
     const profileFields = {
         user: req.user.id,
+        age,
         bio,
         phone,
         emergency_contact,
         emergency_contact_num,
         help_needed_with,
-        is_active: true
+        is_active: true,
+
     };
 
     try {
