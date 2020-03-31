@@ -26,6 +26,7 @@ const Login_Helpee = ({ login, isAuthenticated }) => {
 
 	//Redirect if logged in
 	if (isAuthenticated) {
+		//return <Fragment>sjdhgfjshgkhdfkgj</Fragment>
 		return <Redirect to='/helpee_dashboard' />
 	}
 

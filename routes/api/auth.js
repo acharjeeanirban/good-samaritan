@@ -13,7 +13,7 @@ const HelpUser = require('../../models/Help_User');
 // @access      
 router.get('/', auth, async (req, res) => {
     try {
-        console.log("bazinga 1 : " + req.user.id);
+        console.log("bazinga 1 in auth private route: " + req.user.id);
         const user = await HelpUser.findById(req.user.id).select('-password');
         console.log("bazinga 2");
         console.log(user);
@@ -68,7 +68,7 @@ router.post('/',
                 return sendInvalidCreds(res);
             }
 
-            console.log("bazinga 1");
+            console.log("bazinga 1: in auth.js - login");
             
             const payload = {
                 user: {

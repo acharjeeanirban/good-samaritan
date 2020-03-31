@@ -20,9 +20,12 @@ router.get('/me', auth, async (req, res) => {
         // ['name']);
 
         const profile = await HelpUserProfile.findOne({
-            user: req.user.id
+            //user: req.user.id
+            user: '5e800de72903633889fb3589'
         });
         console.log("TADA bazinga 2");
+        console.log(profile);
+        //res.json(profile.populate('HelpUser', ['name']));
 
         // TODO: [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
         // needs fix
@@ -35,14 +38,14 @@ router.get('/me', auth, async (req, res) => {
 
         console.log("TADA bazinga 3");
 
-        res.json(profile);
+        return res.json(profile);
 
     } catch(err) {
         console.log("TADA bazinga 4");
         console.error(err.message);
         res.status(500).send('Server error');
     }
-    res.send('help profiles route');
+    //res.send('help profiles route');
 })
 
 // @route POST api/help_profile/

@@ -20,4 +20,4 @@ export const getCurrentProfile = () => async dispatch => {
         });
     }
 
-}
+};

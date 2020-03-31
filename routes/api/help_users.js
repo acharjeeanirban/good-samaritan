@@ -65,7 +65,7 @@ router.post('/register',
             
             user.password = await bcrypt.hash(password, salt);
 
-            console.log("bazinga 1");
+            console.log("bazinga in help_users.js");
             await user.save();
 
             console.log("bazinga 2");
