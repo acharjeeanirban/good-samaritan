@@ -25,11 +25,12 @@ const HelpProfileSchema = new mongoose.Schema({
         type: String
     },
     help_needed_with: {
-        type: [String]
+        type: String
     },
     helped_by_volunteers: [{
         helper_id: {type: mongoose.Schema.Types.ObjectId, ref: 'VolUserProfile'},
-        status: {type: String, required: true}
+        //status: {type: String, required: true}
+        status: {type: String}
     }],
     is_active: {
         type: Boolean

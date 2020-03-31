@@ -1,8 +1,11 @@
 import React, { useState, Fragment } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createProfile } from '../../actions/helpee_profile';
+import { createStore } from 'redux';
 
-const CreateHelpeeProfile = props => {
+const CreateHelpeeProfile = ({ createProfile, history }) => {
     const [formData, setFormData] = useState({
 
         bio: '',
@@ -24,6 +27,13 @@ const CreateHelpeeProfile = props => {
 
     } = formData;
 
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const onSubmit = e => {
+        e.preventDefault();
+        createProfile(formData, history);
+    }
+
     return (
         <Fragment>
             <h1 className="large text-primary">
@@ -33,29 +43,29 @@ const CreateHelpeeProfile = props => {
                 <i className="fas fa-user"></i> Let's get some information about you.
             </p>
             <small>* = required field</small>
-            <form className="form">
+            <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
-                    <input type="text" placeholder="Bio" name="bio" required/>
+                    <input type="text" placeholder="Bio" name="bio" required value={bio} onChange={e => onChange(e)}/>
                     <small className="form-text">* Say something about yourself.</small>
                 </div>
                 <div className="form-group">
-                    <input type="text" placeholder="Age" name="age" />
+                    <input type="text" placeholder="Age" name="age" value={age} onChange={e => onChange(e)}/>
                     <small className="form-text">Age</small>
                 </div>
                 <div className="form-group">
-                    <input type="text" placeholder="Phone" name="phone" />
+                    <input type="text" placeholder="Phone" name="phone" value={phone} onChange={e => onChange(e)}/>
                     <small className="form-text">Phone</small>
                 </div>
                 <div className="form-group">
-                    <input type="text" placeholder="Emergency Contact" name="emergency_contact" />
+                    <input type="text" placeholder="Emergency Contact" name="emergency_contact" value={emergency_contact} onChange={e => onChange(e)}/>
                     <small className="form-text">Emergency Contact</small>
                 </div>
                 <div className="form-group">
-                    <input type="text" placeholder="Emergency Contact Number" name="emergency_contact_num" />
+                    <input type="text" placeholder="Emergency Contact Number" name="emergency_contact_num" value={emergency_contact_num} onChange={e => onChange(e)}/>
                     <small className="form-text">Emergency Contact Number</small>
                 </div>
                 <div className="form-group">
-                    <select name="status">
+                    <select name='help_needed_with' value={help_needed_with} onChange={e => onChange(e)}>
                         <option value="0">* What do you need help with</option>
                         <option value="Groceries">Groceries</option>
                         <option value="Pick up medicine">Pick up medicine</option>
@@ -73,7 +83,9 @@ const CreateHelpeeProfile = props => {
 }
 
 CreateHelpeeProfile.propTypes = {
-
+    createProfile: PropTypes.func.isRequired
 }
+// const mapStateToProps = state => ({
 
-export default CreateHelpeeProfile
+// });
+export default connect(null, { createProfile })(withRouter(CreateHelpeeProfile))

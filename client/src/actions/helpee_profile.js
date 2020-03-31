@@ -21,3 +21,39 @@ export const getCurrentProfile = () => async dispatch => {
     }
 
 };
+
+// create or update a profile
+export const createProfile = (formData, history, edit=false) => async dispatch => {
+
+    try {
+        const config = {
+            headers: {
+                'Content-type': 'application/json'
+            }
+        };
+        const res = await axios.post('/api/help_profiles', formData, config);
+
+        //call reducer
+        dispatch({
+            type: GET_PROFILE,
+            payload: res.data
+        });
+
+        dispatch(setAlert(edit ? 'Profile update' : 'Profile created'));
+
+        if (!edit) {
+            history.push('/helpee_dashboard');
+        }
+    } catch (err) {
+        
+        const errors = err.response.data.errors;
+        if (errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
+
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+}

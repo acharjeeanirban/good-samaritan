@@ -9,7 +9,7 @@ const auth = require('../../middleware/auth');
 const HelpUser = require('../../models/Help_User');
 const HelpUserProfile = require('../../models/Help_Profile');
 
-// @route GET api/help_profile/me
+// @route GET /api/help_profiles/me
 // @desc    Get current user's profile
 // @access  Private
 router.get('/me', auth, async (req, res) => {
@@ -48,7 +48,7 @@ router.get('/me', auth, async (req, res) => {
     //res.send('help profiles route');
 })
 
-// @route POST api/help_profile/
+// @route POST /api/help_profiles
 // @desc    Post User profile
 // @access  Public
 router.post('/', [
@@ -81,6 +81,7 @@ router.post('/', [
         emergency_contact_num,
         help_needed_with,
         is_active: true,
+        current_status: 'NOT_ASSIGNED'
 
     };
 
