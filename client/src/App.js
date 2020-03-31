@@ -14,6 +14,8 @@ import store  from './store';
 import Alert from './components/layout/Alert';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
+import HelpeeDashboard from './components/dashboards/HelpeeDashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 import './App.css';
 
@@ -43,6 +45,7 @@ const App = () => {
             <Route exact path="/login_helpee" component={Login_Helpee}></Route>
             <Route exact path="/login_volunteer" component={Login_Volunteer}></Route>
             <Route exact path="/about_us" component={About_Us}></Route>
+            <PrivateRoute exact path="/helpee_dashboard" component={HelpeeDashboard}></PrivateRoute>
           </Switch>
         </section>
       </Fragment>

@@ -15,16 +15,30 @@ const HelpUserProfile = require('../../models/Help_Profile');
 router.get('/me', auth, async (req, res) => {
 
     try {
-        const profile = await HelpUserProfile.findOne({user : req.user.id}).populate('HelpUser',
-        ['name']);
+        console.log("TADA bazinga 1");
+        // const profile = await HelpUserProfile.findOne({user : req.user.id}).populate('HelpUser',
+        // ['name']);
 
+        const profile = await HelpUserProfile.findOne({
+            user: req.user.id
+        });
+        console.log("TADA bazinga 2");
+
+        // TODO: [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+        // needs fix
         if (!profile) {
-            return res.status(400).json({msg: 'There is no profile for this user'});
+            console.log("TADA bazinga 2.5");
+            //TODO: see what you want to return, related to above error
+            //return res.status(400).json({msg: 'There is no profile for this user'});
+            return res.status(400).send('BAZINGA');
         }
+
+        console.log("TADA bazinga 3");
 
         res.json(profile);
 
     } catch(err) {
+        console.log("TADA bazinga 4");
         console.error(err.message);
         res.status(500).send('Server error');
     }

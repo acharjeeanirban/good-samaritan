@@ -11,7 +11,7 @@ const HelpUser = require('../../models/Help_User');
 // @route GET   api/Help_Users
 // @desc        Test route
 // @access      
-router.get('/',auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         console.log("bazinga 1 : " + req.user.id);
         const user = await HelpUser.findById(req.user.id).select('-password');
