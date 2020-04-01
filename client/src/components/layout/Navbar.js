@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+//import { getVolList } from '../../actions/auth';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
@@ -12,7 +13,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
             <li>
                 <Link to='/helpee_dashboard'></Link>
                 <i className='fas fa-user' /> { }
-                <span className='hide-sm'>Dashboard</span>
+                <span className='hide-sm'>Edit Profile</span>
+            </li>
+            <li>
+                <a onClick={logout} href='#!'>
+                <i className='fas fa-user' /> { }
+                <span className='hide-sm'>Get Helpee List</span>
+                </a>
             </li>
             <li>
                 <a onClick={logout} href='#!'>
