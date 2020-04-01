@@ -7,11 +7,12 @@ const {check, validationResult} = require('express-validator');
 const auth = require('../../middleware/auth');
 
 const HelpUser = require('../../models/Help_User');
+const VolUser = require('../../models/Vol_User');
 
 // @route GET   api/Help_Users
 // @desc        Test route
 // @access      
-router.get('/', auth, async (req, res) => {
+router.get('/helpee', auth, async (req, res) => {
     try {
         console.log("bazinga 1 in auth private route: " + req.user.id);
         const user = await HelpUser.findById(req.user.id).select('-password');
@@ -32,10 +33,10 @@ function sendInvalidCreds(res) {
     .json({ errors: [{ msg: 'Invalid Credentials' }] });
 }
 
-// @route       POST api/auth
-// @desc        Authemticate User and get token
+// @route       POST api/auth/helpee
+// @desc        Authemticate/Login User and get token
 // @accesss     Public
-router.post('/',
+router.post('/helpee',
     [
         check('email', 'Please include a valid email').isEmail(),
         check(
@@ -75,6 +76,69 @@ router.post('/',
                   id: user.id
                 }
               };
+        
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                { expiresIn: 360000 },
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });
+                }
+            );
+
+        } catch(err) {
+            console.error(err.message);
+            return res.status(500).json({msg: 'server error while login'});
+        }
+
+    }
+
+);
+
+// @route       POST api/auth/vol
+// @desc        Authemticate/Login Vol and get token
+// @accesss     Public
+router.post('/vol',
+    [
+        check('email', 'Please include a valid email').isEmail(),
+        check(
+            'password',
+            'Password is required'
+        ).exists()
+    ],
+
+    async (req, res) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+          return res.status(400).json({ errors: errors.array() });
+        }
+
+        console.log(req.body);
+
+        const { email, password} = req.body;
+
+        try {
+            
+            let user = await VolUser.findOne({ email });
+            if (!user) {
+                return sendInvalidCreds(res);
+            }
+
+            const isMatch = await bcrypt.compare(password, user.password);
+
+            if (!isMatch) {
+                return sendInvalidCreds(res);
+            }
+
+            console.log("bazinga 1: in auth.js - login");
+            
+            const payload = {
+                user: {
+                  id: user.id
+                }
+            };
         
             jwt.sign(
                 payload,

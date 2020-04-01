@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     res.send('help user route');
 });
 
-//register user
+//register helpee
 router.post('/register',
     [
         check('name', 'Name is required')

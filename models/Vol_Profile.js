@@ -7,7 +7,8 @@ const VolProfileSchema = new mongoose.Schema({
         ref: 'VolUser'
     },
     bio: {
-        type: String
+        type: String,
+        required: true
     },
     age: {
         type: Number
@@ -17,7 +18,7 @@ const VolProfileSchema = new mongoose.Schema({
     },
     helping_user: [{
         helpee_id: {type: mongoose.Schema.Types.ObjectId, ref: 'HelpUserProfile'},
-        status: {type: String, required: true}
+        status: {type: String}
     }],
     is_active: {
         type: Boolean
