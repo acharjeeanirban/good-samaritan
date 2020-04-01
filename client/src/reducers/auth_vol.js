@@ -28,6 +28,7 @@ export default function(state = initialState, action) {
         };
     case VOL_REGISTER_SUCCESS:
     case VOL_LOGIN_SUCCESS:
+        console.log('IN REDUCER');
         localStorage.setItem('token', payload.token);
         return {
             ...state,

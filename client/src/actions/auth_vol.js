@@ -15,7 +15,9 @@ export const loadVol = () => async dispatch => {
     }
 
     try {
+        console.log('QQQ 1');
         const res = await axios.get('/api/auth/vol');
+        console.log('QQQ 2');
 
         dispatch({
             type: VOL_LOADED,

@@ -26,6 +26,7 @@ const Login_Volunteer = ({ loginVol, isAuthenticated }) => {
 
 	//Redirect if logged in
 	if (isAuthenticated) {
+		console.log('TTTTTTTTTTTTTTTTT');
 		//return <Fragment>sjdhgfjshgkhdfkgj</Fragment>
 		return <Redirect to='/vol_dashboard' />
 	}
@@ -68,7 +69,7 @@ Login_Volunteer.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	isAuthenticated: state.auth.isAuthenticated
+	isAuthenticated: state.auth_vol.isAuthenticated
 });
 
 export default connect(mapStateToProps, { loginVol })(Login_Volunteer);
