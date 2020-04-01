@@ -13,7 +13,7 @@ const VolUserProfile = require('../../models/Vol_Profile');
 router.get('/me', auth, async (req, res) => {
 
     try {
-        console.log("TADA bazinga 1, in vol register");
+        console.log("TADA bazinga 1, in vol register : id " + req.user.id);
         // const profile = await HelpUserProfile.findOne({user : req.user.id}).populate('HelpUser',
         // ['name']);
 

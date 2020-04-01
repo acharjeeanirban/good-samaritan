@@ -43,7 +43,7 @@ VolDashboard.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth_vol,
-    profile: state.helpee_profile
+    profile: state.vol_profile
 });
 
 export default connect(mapStateToProps , { getCurrentVolProfile })(VolDashboard)
