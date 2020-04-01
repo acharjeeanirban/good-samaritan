@@ -3,9 +3,9 @@ import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { login } from '../../actions/auth_vol';
+import { loginVol } from '../../actions/auth_vol';
 
-const Login_Volunteer = ({ login, isAuthenticated }) => {
+const Login_Volunteer = ({ loginVol, isAuthenticated }) => {
 
 	const [formData, setFormData] = useState({
 
@@ -21,13 +21,13 @@ const Login_Volunteer = ({ login, isAuthenticated }) => {
 	
 	const onSubmit = async e => {
 		e.preventDefault();
-		login(email, password);
+		loginVol(email, password);
 	};
 
 	//Redirect if logged in
 	if (isAuthenticated) {
 		//return <Fragment>sjdhgfjshgkhdfkgj</Fragment>
-		return <Redirect to='/helpee_dashboard' />
+		return <Redirect to='/vol_dashboard' />
 	}
 
 	return (
@@ -56,14 +56,14 @@ const Login_Volunteer = ({ login, isAuthenticated }) => {
 				<input type="submit" className="btn btn-primary" value="Login" />
 			</form>
 			<p className="my-1">
-				Don't have an account? <Link to="/register_helpee">Register</Link>
+				Don't have an account? <Link to="/register_vol">Register</Link>
 			</p>
 		</Fragment>
 	);
 };
 
-Login_Helpee.propTypes = {
-	login: PropTypes.func.isRequired,
+Login_Volunteer.propTypes = {
+	loginVol: PropTypes.func.isRequired,
 	isAuthenticated: PropTypes.bool
 }
 
@@ -71,4 +71,4 @@ const mapStateToProps = state => ({
 	isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { login })(Login_Volunteer);
+export default connect(mapStateToProps, { loginVol })(Login_Volunteer);

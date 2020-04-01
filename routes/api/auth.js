@@ -26,6 +26,23 @@ router.get('/helpee', auth, async (req, res) => {
     
 });
 
+// @route GET   api/Help_Users
+// @desc        Test route
+// @access      
+router.get('/vol', auth, async (req, res) => {
+    try {
+        console.log("bazinga 1 in auth private route: " + req.user.id);
+        const user = await VolUser.findById(req.user.id).select('-password');
+        console.log("bazinga 2");
+        console.log(user);
+        res.json(user);
+    } catch(err) {
+        console.error(err.message);
+        return res.status(500).json({msg: 'server error'});
+    }
+    
+});
+
 
 function sendInvalidCreds(res) {
     return res
@@ -109,6 +126,8 @@ router.post('/vol',
     ],
 
     async (req, res) => {
+
+        console.log('-~~~~~~~~~~~~~ BAZINGA 1 : in Server');
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
@@ -122,6 +141,7 @@ router.post('/vol',
         try {
             
             let user = await VolUser.findOne({ email });
+            console.log(user);
             if (!user) {
                 return sendInvalidCreds(res);
             }

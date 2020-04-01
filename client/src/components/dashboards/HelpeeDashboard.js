@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/helpee_profile';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
-import HelpeeDashboardActions from './HelpeeDashboardActions';
+//import HelpeeDashboardActions from './HelpeeDashboardActions';
 
 const HelpeeDashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
 
@@ -19,9 +19,11 @@ const HelpeeDashboard = ({ getCurrentProfile, auth: { user }, profile: { profile
             <i className='fas fa-user'></i> Welcome { user && user.name }
         </p>
         { profile !== null ? 
-            (<Fragment> <HelpeeDashboardActions /></Fragment> 
+            (<Fragment> 
                 
-
+                
+                
+            </Fragment> 
                 
                 )  : 
             <Fragment>

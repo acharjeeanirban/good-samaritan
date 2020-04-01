@@ -4,8 +4,8 @@ import Navbar from './components/layout/Navbar';
 import Login_Helpee from './components/auth/Login_Helpee';
 //import { Register_Helpee } from './components/auth/Register_Helpee';
 import Register_Helpee from './components/auth/Register_Helpee';
-import { Login_Volunteer } from './components/auth/Login_Volunteer';
-import { Register_Volunteer } from './components/auth/Register_Volunteer';
+import Login_Volunteer from './components/auth/Login_Volunteer';
+import Register_Volunteer from './components/auth/Register_Volunteer';
 import { About_Us } from './components/misc/About_Us';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //Redux
@@ -48,6 +48,8 @@ const App = () => {
             <Route exact path="/about_us" component={About_Us}></Route>
             <PrivateRoute exact path="/helpee_dashboard" component={HelpeeDashboard}></PrivateRoute>
             <PrivateRoute exact path="/create_helpee_profile" component={CreateHelpeeProfile}></PrivateRoute>
+            <PrivateRoute exact path="/vol_dashboard" component={HelpeeDashboard}></PrivateRoute>
+            <PrivateRoute exact path="/create_vol_profile" component={CreateHelpeeProfile}></PrivateRoute>
           </Switch>
         </section>
       </Fragment>

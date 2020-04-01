@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED,
-        AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, CLEAR_PROFILE }
+import { VOL_REGISTER_SUCCESS, VOL_AUTH_ERROR, VOL_LOADED, VOL_REGISTER_FAIL, VOL_LOGIN_SUCCESS, VOL_LOGIN_FAIL, VOL_CLEAR_PROFILE, VOL_LOGOUT}
  from './types';
 import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
@@ -9,26 +8,29 @@ import setAuthToken from '../utils/setAuthToken';
 export const loadVol = () => async dispatch => {
 
     if (localStorage.token) {
+        console.log(" token found");
         setAuthToken(localStorage.token);
+    } else {
+        console.log(" token not found");
     }
 
     try {
         const res = await axios.get('/api/auth/vol');
 
         dispatch({
-            type: USER_LOADED,
+            type: VOL_LOADED,
             payload: res.data
         });
 
     } catch (err) {
         dispatch({
-            type: AUTH_ERROR
+            type: VOL_AUTH_ERROR
         });
     }
 
 }
 
-//Register user
+//Register vol
 export const registerVol = ({ name, email, password, country, province, city, zipcode }) => async dispatch => {
     const config = {
         headers: {
@@ -41,11 +43,12 @@ export const registerVol = ({ name, email, password, country, province, city, zi
     try {
         const res = await axios.post('/api/vol_users/register', body, config);
         dispatch({
-            type: REGISTER_SUCCESS,
+            type: VOL_REGISTER_SUCCESS,
             payload: res.data
         });
 
-        dispatch(loadUser());
+        dispatch(loadVol());
+
     } catch (err) {
         
         const errors = err.response.data.errors;
@@ -53,12 +56,12 @@ export const registerVol = ({ name, email, password, country, province, city, zi
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
         }
         dispatch({
-            type: REGISTER_FAIL
+            type: VOL_REGISTER_FAIL
         });
     }
 };
 
-// LOGIN user
+// LOGIN vol
 export const loginVol = (email, password) => async dispatch => {
     const config = {
         headers: {
@@ -69,13 +72,16 @@ export const loginVol = (email, password) => async dispatch => {
     const body = JSON.stringify({ email, password });
 
     try {
+        console.log('-~~~~~~~~~~~~~ BAZINGA')
         const res = await axios.post('/api/auth/vol', body, config);
+        console.log(res.data);
+        console.log('Login successful');
         dispatch({
-            type: LOGIN_SUCCESS,
+            type: VOL_LOGIN_SUCCESS,
             payload: res.data
         });
 
-        dispatch(loadUser());
+        dispatch(loadVol());
 
     } catch (err) {
         console.log('bazinga');
@@ -85,14 +91,14 @@ export const loginVol = (email, password) => async dispatch => {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
         }
         dispatch({
-            type: LOGIN_FAIL
+            type: VOL_LOGIN_FAIL
         });
     }
 };
 
 //LOGOUT
 export const logoutVol = () => dispatch => {
-    dispatch({ type: CLEAR_PROFILE });
-    dispatch({ type: LOGOUT });
+    dispatch({ type: VOL_CLEAR_PROFILE });
+    dispatch({ type: VOL_LOGOUT });
 };
 
