@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 import Login_Helpee from './components/auth/Login_Helpee';
-//import { Register_Helpee } from './components/auth/Register_Helpee';
 import Register_Helpee from './components/auth/Register_Helpee';
 import Login_Volunteer from './components/auth/Login_Volunteer';
 import Register_Volunteer from './components/auth/Register_Volunteer';
@@ -15,8 +14,11 @@ import Alert from './components/layout/Alert';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
 import HelpeeDashboard from './components/dashboards/HelpeeDashboard';
+import VolDashboard from './components/dashboards/VolDashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
+import VolPrivateRoute from './components/routing/VolPrivateRoute';
 import CreateHelpeeProfile from './components/profile-form/CreateHelpeeProfile';
+import CreateVolProfile from './components/profile-form/CreateVolProfile';
 
 import './App.css';
 
@@ -48,8 +50,8 @@ const App = () => {
             <Route exact path="/about_us" component={About_Us}></Route>
             <PrivateRoute exact path="/helpee_dashboard" component={HelpeeDashboard}></PrivateRoute>
             <PrivateRoute exact path="/create_helpee_profile" component={CreateHelpeeProfile}></PrivateRoute>
-            <PrivateRoute exact path="/vol_dashboard" component={HelpeeDashboard}></PrivateRoute>
-            <PrivateRoute exact path="/create_vol_profile" component={CreateHelpeeProfile}></PrivateRoute>
+            <VolPrivateRoute exact path="/vol_dashboard" component={VolDashboard}></VolPrivateRoute>
+            <VolPrivateRoute exact path="/create_vol_profile" component={CreateVolProfile}></VolPrivateRoute>
           </Switch>
         </section>
       </Fragment>

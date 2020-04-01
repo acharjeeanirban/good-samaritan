@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/helpee_profile';
-import { createStore } from 'redux';
 
 const CreateHelpeeProfile = ({ createProfile, history }) => {
     const [formData, setFormData] = useState({

@@ -37,10 +37,12 @@ const Register_Volunteer = ({ setAlert, registerVol, isAuthenticated }) => {
 
 	}
 
+	console.log(" client reg before isAuth check : bazinga");
 	//Redirect if logged in
 	if (isAuthenticated) {
 		return <Redirect to='/vol_dashboard' />
 	}
+	console.log(" client reg after isAuth check");
 
 	return (
 		<Fragment>
@@ -116,7 +118,7 @@ const Register_Volunteer = ({ setAlert, registerVol, isAuthenticated }) => {
 
 Register_Volunteer.propTypes = {
 	setAlert: PropTypes.func.isRequired,
-	register: PropTypes.func.isRequired,
+	registerVol: PropTypes.func.isRequired,
 	isAuthenticated: PropTypes.bool
 };
 
