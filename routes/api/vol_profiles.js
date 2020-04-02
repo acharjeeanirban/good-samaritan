@@ -83,7 +83,7 @@ router.post('/', [
         return res.status(400).json({ errors: errors.array() });
     }
 
-    console.log(req.body);
+    
 
     const {
         bio,
@@ -108,6 +108,15 @@ router.post('/', [
     };
 
     try {
+
+        let vol_user = await VolUser.findOne({_id: req.user.id});
+        if (vol_user) {
+            console.log('TTTTTT : bazinga ');
+            console.log(vol_user);
+            profileFields.name = vol_user.name;
+            profileFields.email = vol_user.email;
+            console.log(profileFields);
+        }
         let profile = await VolUserProfile.findOne({user: req.user.id});
 
         //update

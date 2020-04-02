@@ -156,6 +156,15 @@ router.post('/', [
     try {
         let profile = await HelpUserProfile.findOne({user: req.user.id});
 
+        let help_user = await HelpUser.findOne({_id: req.user.id});
+        if (help_user) {
+            console.log('TTTTTT : bazinga ');
+            console.log(help_user);
+            profileFields.name = help_user.name;
+            profileFields.email = help_user.email;
+            console.log(profileFields);
+        }
+
         //update
         if (profile) {
             profile = await HelpUserProfile.findOneAndUpdate(

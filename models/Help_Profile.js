@@ -8,6 +8,14 @@ const HelpProfileSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'HelpUser'
     },
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
     bio: {
         type: String,
         required: true

@@ -17,7 +17,10 @@ const HelpeeListInVolDashboard = (props) => {
     }
     return (
         <div className="container">
-            Name : {props.eachHelpee.bio} <br/>
+            Name : {props.eachHelpee.name} <br/>
+            Email : {props.eachHelpee.email} <br/>
+            Bio : {props.eachHelpee.bio} <br/>
+            Need help with : {props.eachHelpee.help_needed_with} <br/>
             Age : {props.eachHelpee.age} <br/>
             City : {props.eachHelpee.city} <br/>
             <div className="buttons">
