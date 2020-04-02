@@ -6,7 +6,7 @@ import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 //import HelpeeDashboardActions from './HelpeeDashboardActions';
 
-const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile, loading } }) => {
+const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile, loading, profiles } }) => {
 
     useEffect(() => {
         getCurrentVolProfile();
@@ -19,8 +19,15 @@ const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile
             <i className='fas fa-user'></i> Welcome { user && user.name }
         </p>
         { profile !== null ? 
-            (<Fragment>    
-                Please click on 'Get Helpee List' to get started.
+            (<Fragment>
+
+            <p>BAZINGA      :   {profiles && profiles.length !=0 ? (
+                profiles.map(prof => {
+                    return (<li key={prof._id}>{prof.bio}</li>);
+                }) 
+                ) : null }</p>
+
+                
             </Fragment>)  : 
             <Fragment>
 
@@ -43,7 +50,7 @@ VolDashboard.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth_vol,
-    profile: state.vol_profile
+    profile: state.vol_profile,
 });
 
 export default connect(mapStateToProps , { getCurrentVolProfile })(VolDashboard)
