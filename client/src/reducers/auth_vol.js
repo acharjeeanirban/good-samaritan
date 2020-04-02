@@ -19,6 +19,7 @@ export default function(state = initialState, action) {
 
     const { type, payload } = action;
     switch(type) {
+
     case VOL_LOADED:
         return {
             ...state,
@@ -41,6 +42,7 @@ export default function(state = initialState, action) {
     case VOL_LOGIN_FAIL:
     case VOL_LOGOUT:    
         localStorage.removeItem('token');
+        console.log('-------- bazinga in vol logout--------')
         return {
             ...state,
             token: null,
@@ -49,6 +51,5 @@ export default function(state = initialState, action) {
         };
     default:
         return state;
-
     }
 }

@@ -55,7 +55,7 @@ router.get('/me', auth, async (req, res) => {
 router.get('/list', auth, async (req, res) => {
 
     try {
-        console.log("TADA bazinga 1");
+        console.log("TADA list  bazinga 1");
         // const profile = await HelpUserProfile.findOne({user : req.user.id}).populate('HelpUser',
         // ['name']);
 
@@ -66,28 +66,35 @@ router.get('/list', auth, async (req, res) => {
 
         console.log('cityyyyyyy : banzing : ' + vol_profile.city);
 
-        const user_profile = await HelpUserProfile.find({
-            city: vol_profile.city
+        const user_profiles = await HelpUserProfile.find({
+            city: vol_profile.city,
+            current_status: 'NOT_ASSIGNED'
             //user: '5e800de72903633889fb3589'
         });
         
-        console.log("TADA bazinga 2");
+        console.log("TADA list  bazinga 2");
         console.log(vol_profile);
-        console.log(user_profile);
+        console.log(user_profiles);
         //res.json(profile.populate('HelpUser', ['name']));
 
         // TODO: [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
         // needs fix
         if (!vol_profile) {
-            console.log("TADA bazinga 2.5");
+            console.log("TADA list  bazinga 2.5");
             //TODO: see what you want to return, related to above error
             //return res.status(400).json({msg: 'There is no profile for this user'});
             return res.status(400).send('BAZINGA');
         }
 
-        console.log("TADA bazinga 3");
+        const combined = {
+            vol_profile: vol_profile,
+            user_profiles: user_profiles
+        };
 
-        return res.json(user_profile);
+        console.log("TADA list bazinga 3");
+        console.log(combined);
+
+        return res.json(combined);
 
     } catch(err) {
         console.log("TADA bazinga 4");
