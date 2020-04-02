@@ -20,7 +20,7 @@ const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile
         </p>
         { profile !== null ? 
             (<Fragment>    
-                hsgdfjgsdjfgsj
+                Please click on 'Get Helpee List' to get started.
             </Fragment>)  : 
             <Fragment>
 

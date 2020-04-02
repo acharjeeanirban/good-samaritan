@@ -1,23 +1,24 @@
 // import axios from 'axios';
-// import { setAlert } from './alert';
-// import { GET_PROFILE, PROFILE_ERROR } from './types';
+import { setAlert } from './alert';
+import { GET_HELPEE_LIST, GET_HELPEE_LIST_ERROR } from './types';
+import axios from 'axios';
 
-// //get current user profile
-// export const getHelpeeList = () => async dispatch => {
+// //get helpee list 
+export const getHelpeeList = () => async dispatch => {
 
-//     try {
-//         const res = await axios.get('/api/help_profiles/me');
+    try {
+        const res = await axios.get('/api/help_profiles/list');
 
-//         dispatch({
-//             type: GET_PROFILE,
-//             payload: res.data
-//         });
+        dispatch({
+            type: GET_HELPEE_LIST,
+            payload: res.data
+        });
 
-//     } catch (err) {
-//         dispatch({
-//             type: PROFILE_ERROR,
-//             payload: { msg: err.response.statusText, status: err.response.status }
-//         });
-//     }
+    } catch (err) {
+        dispatch({
+            type: GET_HELPEE_LIST_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
 
-// };
+};

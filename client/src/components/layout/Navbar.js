@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import { logoutVol } from '../../actions/auth_vol';
 //import { getVolList } from '../../actions/auth';
+import { getHelpeeList } from '../../actions/get_helpee_list';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVol }) => {
+const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVol, getHelpeeList }) => {
 
     const authLinks = (
 
@@ -39,7 +40,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVo
                 <span className='hide-sm'>Edit Profile</span>
             </li>
             <li>
-                <a onClick={logoutVol} href='#!'>
+                <a onClick={getHelpeeList} href='#!'>
                 <i className='fas fa-user' /> { }
                 <span className='hide-sm'>Get Helpee List</span>
                 </a>
@@ -87,6 +88,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVo
 Navbar.propTypes = {
     logout: PropTypes.func.isRequired,
     logoutVol: PropTypes.func.isRequired,
+    getHelpeeList: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     auth_vol: PropTypes.object.isRequired,
 };
@@ -96,4 +98,4 @@ const mapStateToProps = state => ({
     auth_vol: state.auth_vol
 });
 
-export default connect(mapStateToProps, { logout, logoutVol })(Navbar);
+export default connect(mapStateToProps, { logout, logoutVol, getHelpeeList })(Navbar);

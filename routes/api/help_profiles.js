@@ -8,6 +8,7 @@ const auth = require('../../middleware/auth');
 
 const HelpUser = require('../../models/Help_User');
 const HelpUserProfile = require('../../models/Help_Profile');
+const VolUserProfile = require('../../models/Vol_Profile');
 
 // @route GET /api/help_profiles/me
 // @desc    Get current user's profile
@@ -46,7 +47,55 @@ router.get('/me', auth, async (req, res) => {
         res.status(500).send('Server error');
     }
     //res.send('help profiles route');
-})
+});
+
+// @route GET /api/help_profiles/me
+// @desc    Get current user's profile
+// @access  Private
+router.get('/list', auth, async (req, res) => {
+
+    try {
+        console.log("TADA bazinga 1");
+        // const profile = await HelpUserProfile.findOne({user : req.user.id}).populate('HelpUser',
+        // ['name']);
+
+        const vol_profile = await VolUserProfile.findOne({
+            user: req.user.id
+            //user: '5e800de72903633889fb3589'
+        });
+
+        console.log('cityyyyyyy : banzing : ' + vol_profile.city);
+
+        const user_profile = await HelpUserProfile.find({
+            city: vol_profile.city
+            //user: '5e800de72903633889fb3589'
+        });
+        
+        console.log("TADA bazinga 2");
+        console.log(vol_profile);
+        console.log(user_profile);
+        //res.json(profile.populate('HelpUser', ['name']));
+
+        // TODO: [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+        // needs fix
+        if (!vol_profile) {
+            console.log("TADA bazinga 2.5");
+            //TODO: see what you want to return, related to above error
+            //return res.status(400).json({msg: 'There is no profile for this user'});
+            return res.status(400).send('BAZINGA');
+        }
+
+        console.log("TADA bazinga 3");
+
+        return res.json(user_profile);
+
+    } catch(err) {
+        console.log("TADA bazinga 4");
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+    //res.send('help profiles route');
+});
 
 // @route POST /api/help_profiles
 // @desc    Post User profile
