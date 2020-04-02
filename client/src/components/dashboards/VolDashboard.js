@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { getCurrentVolProfile } from '../../actions/vol_profile';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
-//import HelpeeDashboardActions from './HelpeeDashboardActions';
+ 
+import HelpeeListInVolDashboard from './HelpeeListInVolDashboard';
 
 const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile, loading, profiles } }) => {
 
@@ -21,11 +22,13 @@ const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile
         { profile !== null ? 
             (<Fragment>
 
-            <p>BAZINGA      :   {profiles && profiles.length !=0 ? (
-                profiles.map(prof => {
-                    return (<li key={prof._id}>{prof.bio}</li>);
-                }) 
-                ) : null }</p>
+            List of people who need help  : {
+                profiles && profiles.length !==0 ? (
+                    profiles.map(prof => {
+                        return (<HelpeeListInVolDashboard key={prof._id} eachHelpee={prof}/>)
+                        //return (<li key={prof._id}>{prof.bio}</li>);
+                    }) 
+                ) : null }
 
                 
             </Fragment>)  : 
