@@ -15,6 +15,22 @@ const HelpProfileSchema = new mongoose.Schema({
     age: {
         type: Number
     },
+    country: {
+        type: String,
+        required: true
+    },
+    province: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    zipcode: {
+        type: String,
+        required: true
+    },
     phone: {
         type: String
     },

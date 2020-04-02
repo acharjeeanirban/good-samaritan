@@ -13,14 +13,10 @@ const Register_Volunteer = ({ setAlert, registerVol, isAuthenticated }) => {
 		name: '',
 		email: '',
 		password: '',
-		password2: '',
-		country: '',
-		province: '',
-		city: '',
-		zipcode: ''
+		password2: ''
 	});
 	
-	const { name, email, password,password2, country, province, city, zipcode } = formData;
+	const { name, email, password,password2 } = formData;
 
 	const onChange = e =>
 	setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,7 +28,7 @@ const Register_Volunteer = ({ setAlert, registerVol, isAuthenticated }) => {
 		if (password !== password2) {
 			setAlert('Passwords do not match', 'danger', 2000);
 		} else {
-			registerVol({ name, email, password, password2, country, province, city, zipcode })
+			registerVol({ name, email, password, password2 })
 		}
 
 	}
@@ -82,31 +78,7 @@ const Register_Volunteer = ({ setAlert, registerVol, isAuthenticated }) => {
 						onChange={e => onChange(e)}
 					/>
         		</div>
-				<div className="form-group">
-					<input type="text" placeholder="Country" name="country" 
-						value={country}
-						onChange={e => onChange(e)}
-						required/>
-				</div>
-				<div className="form-group">
-					<input type="text" placeholder="Province/State" name="province" 
-						value={province}
-						onChange={e => onChange(e)}
-						required/>
-				</div>
-				<div className="form-group">
-					<input type="text" placeholder="City" name="city" 
-						value={city}
-						onChange={e => onChange(e)}
-						required/>
-				</div>
-                <div className="form-group">
-					<input type="text" placeholder="Zipcode" name="zipcode" 
-						value={zipcode}
-						onChange={e => onChange(e)}
-						required/>
-				</div>
-
+				
 				<input type="submit" className="btn btn-primary" value="Register" />
 			</form>
 			<p className="my-1">

@@ -53,7 +53,11 @@ router.get('/me', auth, async (req, res) => {
 // @access  Public
 router.post('/', [
     auth,
-    check('bio', 'bio is required').not().isEmpty()
+    check('bio', 'bio is required').not().isEmpty(),
+    check('country', 'Country is required').not().isEmpty(),
+    check('province', 'province is required').not().isEmpty(),
+    check('city', 'city is required').not().isEmpty(),
+    check('zipcode', 'zipcode is required').not().isEmpty()
 ], async (req, res) => {
 
     const errors = validationResult(req);
@@ -67,6 +71,10 @@ router.post('/', [
         bio,
         age,
         phone,
+        country,
+        province,
+        city,
+        zipcode,
         emergency_contact,
         emergency_contact_num,
         help_needed_with
@@ -77,6 +85,10 @@ router.post('/', [
         age,
         bio,
         phone,
+        country,
+        province,
+        city,
+        zipcode,
         emergency_contact,
         emergency_contact_num,
         help_needed_with,

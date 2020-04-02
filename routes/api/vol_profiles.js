@@ -6,6 +6,7 @@ const config = require('config');
 const {check, validationResult} = require('express-validator');
 const auth = require('../../middleware/auth');
 const VolUserProfile = require('../../models/Vol_Profile');
+const VolUser = require('../../models/Vol_User');
 
 // @route GET /api/vol_profiles/me
 // @desc    Get current vol's profile
@@ -21,9 +22,26 @@ router.get('/me', auth, async (req, res) => {
             user: req.user.id
             //user: '5e800de72903633889fb3589'
         });
+
+        // const profile_user = await VolUser.findOne({
+        //     _id: req.user.id
+        //     //user: '5e800de72903633889fb3589'
+        // });
+
         console.log("TADA bazinga 2");
         console.log(profile);
+        //console.log(profile_user);
         //res.json(profile.populate('HelpUser', ['name']));
+
+        ///
+
+        // profile.city = profile_user['city'];
+
+        // console.log('TTTTT bazinga');
+        // console.log(profile);
+        // console.log('TTTTT bazinga');
+
+        ///
 
         // TODO: [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
         // needs fix
@@ -35,6 +53,8 @@ router.get('/me', auth, async (req, res) => {
         }
 
         console.log("TADA bazinga 3");
+
+
 
         return res.json(profile);
 
@@ -51,7 +71,11 @@ router.get('/me', auth, async (req, res) => {
 // @access  Public
 router.post('/', [
     auth,
-    check('bio', 'bio is required').not().isEmpty()
+    check('bio', 'bio is required').not().isEmpty(),
+    check('country', 'Country is required').not().isEmpty(),
+    check('province', 'province is required').not().isEmpty(),
+    check('city', 'city is required').not().isEmpty(),
+    check('zipcode', 'zipcode is required').not().isEmpty()
 ], async (req, res) => {
 
     const errors = validationResult(req);
@@ -64,7 +88,11 @@ router.post('/', [
     const {
         bio,
         age,
-        phone
+        phone,
+        country,
+        province,
+        city,
+        zipcode
     } = req.body;
 
     const profileFields = {
@@ -72,6 +100,10 @@ router.post('/', [
         age,
         bio,
         phone,
+        country,
+        province,
+        city,
+        zipcode,
         is_active: true
     };
 

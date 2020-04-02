@@ -10,6 +10,10 @@ const CreateHelpeeProfile = ({ createProfile, history }) => {
         bio: '',
         age: '',
         phone: '',
+        country: '',
+        province: '',
+        city: '',
+        zipcode: '',
         emergency_contact: '',
         emergency_contact_num: '',
         help_needed_with: ''
@@ -20,6 +24,10 @@ const CreateHelpeeProfile = ({ createProfile, history }) => {
         bio,
         age,
         phone,
+        country,
+        province,
+        city,
+        zipcode,
         emergency_contact,
         emergency_contact_num,
         help_needed_with
@@ -54,6 +62,22 @@ const CreateHelpeeProfile = ({ createProfile, history }) => {
                 <div className="form-group">
                     <input type="text" placeholder="Phone" name="phone" value={phone} onChange={e => onChange(e)}/>
                     <small className="form-text">Phone</small>
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="Country" name="country" required value={country} onChange={e => onChange(e)}/>
+                    <small className="form-text">Country</small>
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="Province/State" name="province" required requiredvalue={province} onChange={e => onChange(e)}/>
+                    <small className="form-text">Province</small>
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="City" name="city" required value={city} onChange={e => onChange(e)}/>
+                    <small className="form-text">City</small>
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="Zipcode" name="zipcode" required value={zipcode} onChange={e => onChange(e)}/>
+                    <small className="form-text">Zipcode</small>
                 </div>
                 <div className="form-group">
                     <input type="text" placeholder="Emergency Contact" name="emergency_contact" value={emergency_contact} onChange={e => onChange(e)}/>

@@ -9,14 +9,22 @@ const CreateVolProfile = ({ createVolProfile, history }) => {
 
         bio: '',
         age: '',
-        phone: ''
+        phone: '',
+        country: '',
+        province: '',
+        city: '',
+        zipcode: ''
     });
 
     const {
 
         bio,
         age,
-        phone
+        phone,
+        country,
+        province,
+        city,
+        zipcode
 
     } = formData;
 
@@ -49,7 +57,22 @@ const CreateVolProfile = ({ createVolProfile, history }) => {
                     <input type="text" placeholder="Phone" name="phone" value={phone} onChange={e => onChange(e)}/>
                     <small className="form-text">Phone</small>
                 </div>
-                
+                <div className="form-group">
+                    <input type="text" placeholder="Country" name="country" required value={country} onChange={e => onChange(e)}/>
+                    <small className="form-text">Country</small>
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="Province/State" name="province" required value={province} onChange={e => onChange(e)}/>
+                    <small className="form-text">Province</small>
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="City" name="city" required value={city} onChange={e => onChange(e)}/>
+                    <small className="form-text">City</small>
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="Zipcode" name="zipcode" required value={zipcode} onChange={e => onChange(e)}/>
+                    <small className="form-text">Zipcode</small>
+                </div>
                 <input type="submit" className="btn btn-primary my-1" />
                 <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
             </form>

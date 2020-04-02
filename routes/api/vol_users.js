@@ -23,11 +23,7 @@ router.post('/register',
         check(
             'password',
             'Please enter a password with 6 or more characters'
-        ).isLength({ min: 6 }),
-        check('country', 'Country is required').not().isEmpty(),
-        check('province', 'province is required').not().isEmpty(),
-        check('city', 'city is required').not().isEmpty(),
-        check('zipcode', 'zipcode is required').not().isEmpty()
+        ).isLength({ min: 6 })
     ],
 
     async (req, res) => {
@@ -39,7 +35,7 @@ router.post('/register',
 
         console.log(req.body);
 
-        const { name, email, password, country, province,city, zipcode } = req.body;
+        const { name, email, password } = req.body;
 
         try {
             
@@ -54,11 +50,7 @@ router.post('/register',
             user = new Vol_User({
                 name,
                 email,
-                password,
-                country,
-                province,
-                city,
-                zipcode,
+                password
             });
 
             const salt = await bcrypt.genSalt(10);

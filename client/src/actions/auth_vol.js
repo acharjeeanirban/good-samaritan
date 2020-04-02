@@ -33,14 +33,14 @@ export const loadVol = () => async dispatch => {
 }
 
 //Register vol
-export const registerVol = ({ name, email, password, country, province, city, zipcode }) => async dispatch => {
+export const registerVol = ({ name, email, password }) => async dispatch => {
     const config = {
         headers: {
             'Content-type': 'application/json'
         }
     }
 
-    const body = JSON.stringify({ name, email, password, country, province, city, zipcode });
+    const body = JSON.stringify({ name, email, password });
 
     try {
         const res = await axios.post('/api/vol_users/register', body, config);
