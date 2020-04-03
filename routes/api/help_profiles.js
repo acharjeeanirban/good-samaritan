@@ -244,6 +244,8 @@ router.get('/list/:helpee_id', auth, async (req, res) => {
 
         console.log('BAZINGA Q2');
 
+        helpee_profile.current_status = 'ASSIGNED';
+
         if (helpee_profile.helped_by_volunteers) {
             helpee_profile.helped_by_volunteers.push(volunteered_by);
         } else {

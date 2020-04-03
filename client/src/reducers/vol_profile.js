@@ -44,14 +44,19 @@ export default function(state=initialState, action) {
                 loading: false
             }
         case ACCEPT_HELPEE_LIST:
-                console.log('I AM ANIRBAN : ACCEPT_HELPEE_LIST');
-                console.log(payload);
-                return {
-                    ...state,
-                    profile: payload.vol_profiles,
-                    my_accepted_list: payload.user_profiles,
-                    loading: false
-                };
+            console.log('I AM ANIRBAN : ACCEPT_HELPEE_LIST');
+            console.log(payload);
+            const new_stuff = state.profiles.filter(e => {
+                return e._id !== payload.user_profiles._id;
+            });
+
+            return {
+                ...state,
+                profile: payload.vol_profiles,
+                profiles: new_stuff,
+                my_accepted_list: payload.user_profiles,
+                loading: false
+            };
         default:
             return state;
 
