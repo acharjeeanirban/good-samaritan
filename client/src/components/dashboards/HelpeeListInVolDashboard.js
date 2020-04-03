@@ -5,10 +5,11 @@ import { acceptHelpee } from '../../actions/accept_helpee';
 import { connect } from 'react-redux';
 
 const HelpeeListInVolDashboard = (props) => {
+//const HelpeeListInVolDashboard = ({ acceptHelpee, auth: { user }, profile: { profile, loading, profiles } }) => {
 
     const onClickAccept = e => {
         e.preventDefault();
-        //alert('onClickAccept ' + props.eachHelpee._id);
+        alert('onClickAccept ' + props.eachHelpee._id);
         console.log('BAZINGAAA in HelpeeListInVolDashboard : ' + props.eachHelpee._id);
         acceptHelpee(props.eachHelpee._id);
 
@@ -46,7 +47,7 @@ const HelpeeListInVolDashboard = (props) => {
 // });
 
 HelpeeListInVolDashboard.propTypes = {
-    // acceptHelpee: PropTypes.func.isRequired,
+    acceptHelpee: PropTypes.func.isRequired,
     //auth: PropTypes.object.isRequired,
     //profile: PropTypes.object.isRequired
 };

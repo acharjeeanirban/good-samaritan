@@ -9,7 +9,7 @@ import { acceptHelpee } from '../../actions/accept_helpee';
  
 import HelpeeListInVolDashboard from './HelpeeListInVolDashboard';
 
-const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile, loading, profiles } }) => {
+const VolDashboard = ({ getCurrentVolProfile, acceptHelpee, auth: { user }, profile: { profile, loading, profiles } }) => {
 
     useEffect(() => {
         getCurrentVolProfile();
@@ -27,8 +27,23 @@ const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile
             List of people who need help  : {
                 profiles && profiles.length !==0 ? (
                     profiles.map(prof => {
-                        return (<HelpeeListInVolDashboard key={prof._id} eachHelpee={prof} />)
+                        //return (<HelpeeListInVolDashboard key={prof._id} eachHelpee={prof} />)
+                        //return (<HelpeeListInVolDashboard key={prof._id} />)
                         //return (<li key={prof._id}>{prof.bio}</li>);
+
+                        return (<div className="container" key={prof._id}> 
+                            Name : {prof.name} <br/>
+                            Email : {prof.email} <br/>
+                            Bio : {prof.bio} <br/>
+                            Need help with : {prof.help_needed_with} <br/>
+                            Age : {prof.age} <br/>
+                            City : {prof.city} <br/>
+                            <div className="buttons">
+                                
+                                <button type="button" onClick={e => {acceptHelpee(prof._id)}} className="btn btn-primary">Accept</button>
+                            </div>
+                        </div>
+                       )
                     }) 
                 ) : null }
 
@@ -49,7 +64,7 @@ const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile
 
 VolDashboard.propTypes = {
     getCurrentVolProfile: PropTypes.func.isRequired,
-    //acceptHelpee: PropTypes.func.isRequired,
+    acceptHelpee: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
 };
@@ -59,4 +74,4 @@ const mapStateToProps = state => ({
     profile: state.vol_profile,
 });
 
-export default connect(mapStateToProps , { getCurrentVolProfile })(VolDashboard)
+export default connect(mapStateToProps , { getCurrentVolProfile, acceptHelpee })(VolDashboard)
