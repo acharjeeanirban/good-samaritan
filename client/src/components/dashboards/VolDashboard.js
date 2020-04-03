@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getCurrentVolProfile } from '../../actions/vol_profile';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
+
+import { acceptHelpee } from '../../actions/accept_helpee';
  
 import HelpeeListInVolDashboard from './HelpeeListInVolDashboard';
 
@@ -25,7 +27,7 @@ const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile
             List of people who need help  : {
                 profiles && profiles.length !==0 ? (
                     profiles.map(prof => {
-                        return (<HelpeeListInVolDashboard key={prof._id} eachHelpee={prof}/>)
+                        return (<HelpeeListInVolDashboard key={prof._id} eachHelpee={prof} />)
                         //return (<li key={prof._id}>{prof.bio}</li>);
                     }) 
                 ) : null }
@@ -47,6 +49,7 @@ const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile
 
 VolDashboard.propTypes = {
     getCurrentVolProfile: PropTypes.func.isRequired,
+    //acceptHelpee: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
 };

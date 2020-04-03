@@ -187,5 +187,98 @@ router.post('/', [
 
 });
 
+// @route GET /api/help_profiles/list/:help_id
+// @desc    Get current user's profile
+// @access  Private
+router.get('/list/:helpee_id', auth, async (req, res) => {
+
+    try {
+        
+        console.log("TADA list/:help_id  bazinga 1 : " + req.params.helpee_id);
+        // const profile = await HelpUserProfile.findOne({user : req.user.id}).populate('HelpUser',
+        // ['name']);
+
+        // update the Vol_profile table with the accepted helpees
+        let vol_profile = await VolUserProfile.findOne({
+            user: req.user.id
+            //user: '5e800de72903633889fb3589'
+        });
+
+        const helpee = {
+            helpee_id: req.params.helpee_id,
+            status: 'ASSIGNED'
+        };
+        if (vol_profile.helping_user) {
+            vol_profile.helping_user.push(helpee);
+        } else {
+            vol_profile.helping_user = [];
+            vol_profile.helping_user.push(helpee);
+        }
+
+        console.log(vol_profile);
+
+        //update
+        //update
+        if (vol_profile) {
+            vol_profile = await VolUserProfile.findOneAndUpdate(
+                {user: req.user.id},
+                {$set: vol_profile},
+                {new: true}
+            );
+        }
+
+        /////////////
+
+        //// update the Help_profiles table with the accepted vols
+
+        let helpee_profile = await HelpUserProfile.findOne({
+            _id: req.params.helpee_id
+        });
+
+        console.log('BAZINGA Q1');
+
+        const volunteered_by = {
+            helper_id: vol_profile._id,
+            status: 'ASSIGNED'
+        };
+
+        console.log('BAZINGA Q2');
+
+        if (helpee_profile.helped_by_volunteers) {
+            helpee_profile.helped_by_volunteers.push(volunteered_by);
+        } else {
+            helpee_profile.helped_by_volunteers = [];
+            helpee_profile.helped_by_volunteers.push(volunteered_by);
+        }
+
+        console.log(helpee_profile);
+
+        if (helpee_profile) {
+            helpee_profile = await HelpUserProfile.findOneAndUpdate(
+                {_id: req.params.helpee_id},
+                {$set: helpee_profile},
+                {new: true}
+            );
+        }
+
+        // combine and send back
+
+        const combined = {
+            vol_profiles: vol_profile,
+            user_profiles: helpee_profile
+        };
+
+        console.log("TADA list bazinga 3, in accept");
+        console.log(combined);
+
+        return res.json(combined);
+
+    } catch(err) {
+        console.log("TADA bazinga 4, error in accept");
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+    //res.send('help profiles route');
+});
 
 module.exports = router;

@@ -30,6 +30,11 @@ export const GET_HELPEE_LIST = 'GET_HELPEE_LIST';
 export const GET_HELPEE_LIST_ERROR = 'GET_HELPEE_LIST_ERROR';
 
 
+// accepted list
+export const ACCEPT_HELPEE_LIST = 'ACCEPT_HELPEE_LIST';
+export const ACCEPT_HELPEE_LIST_ERROR = 'ACCEPT_HELPEE_LIST_ERROR';
+
+
 
 
 

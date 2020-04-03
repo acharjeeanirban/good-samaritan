@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
+import { acceptHelpee } from '../../actions/accept_helpee';
+import { connect } from 'react-redux';
 
 const HelpeeListInVolDashboard = (props) => {
 
     const onClickAccept = e => {
         e.preventDefault();
-        alert('onClickAccept ' + props.eachHelpee.bio);
+        //alert('onClickAccept ' + props.eachHelpee._id);
+        console.log('BAZINGAAA in HelpeeListInVolDashboard : ' + props.eachHelpee._id);
+        acceptHelpee(props.eachHelpee._id);
 
     }
 
@@ -24,8 +28,7 @@ const HelpeeListInVolDashboard = (props) => {
             Age : {props.eachHelpee.age} <br/>
             City : {props.eachHelpee.city} <br/>
             <div className="buttons">
-                        <button type="button" onClick={e => onClickAccept(e)} className="btn btn-primary">Accept</button>
-                        <button type="button" onClick={e => onClickReject(e)} className="btn btn-primary">Reject</button>
+                <button type="button" onClick={acceptHelpee(props.eachHelpee._id)} className="btn btn-primary">Accept</button>
             </div>
         </div>
     )
@@ -42,4 +45,10 @@ const HelpeeListInVolDashboard = (props) => {
 //     profile: state.vol_profile,
 // });
 
-export default HelpeeListInVolDashboard;
+HelpeeListInVolDashboard.propTypes = {
+    // acceptHelpee: PropTypes.func.isRequired,
+    //auth: PropTypes.object.isRequired,
+    //profile: PropTypes.object.isRequired
+};
+
+export default connect(null, { acceptHelpee })(HelpeeListInVolDashboard);
