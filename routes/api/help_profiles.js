@@ -39,7 +39,40 @@ router.get('/me', auth, async (req, res) => {
 
         console.log("TADA bazinga 3");
 
-        return res.json(profile);
+        let vol_id = null;
+        let vol_profiles = [];
+        let vol_profile = null;
+        /// get list of vols for helpee
+        if (profile.helped_by_volunteers && profile.helped_by_volunteers.length > 0) {
+
+            for(i = 0; i < profile.helped_by_volunteers.length; i++) {
+                let prof = profile.helped_by_volunteers[i];
+                vol_id =  prof.helper_id;
+                console.log('***************************** ' + vol_id);
+                vol_profile = await VolUserProfile.findOne({
+                    _id: vol_id
+                    //user: '5e800de72903633889fb3589'
+                });
+                console.log('***************************** bazinga' );
+                console.log(vol_profile);
+    
+                vol_profiles.push(vol_profile)
+            }
+
+        }
+
+        console.log('*****************************');
+        console.log(vol_profiles);
+        console.log('*****************************');
+        
+        const combined = {
+            vol_profile: vol_profiles,
+            user_profile: profile
+        };
+
+        ///
+
+        return res.json(combined);
 
     } catch(err) {
         console.log("TADA bazinga 4");

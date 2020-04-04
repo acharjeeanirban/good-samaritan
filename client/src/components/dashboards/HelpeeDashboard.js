@@ -6,7 +6,7 @@ import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 //import HelpeeDashboardActions from './HelpeeDashboardActions';
 
-const HelpeeDashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
+const HelpeeDashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading, profiles } }) => {
 
     useEffect(() => {
         getCurrentProfile();
@@ -21,7 +21,29 @@ const HelpeeDashboard = ({ getCurrentProfile, auth: { user }, profile: { profile
         { profile !== null ? 
             (<Fragment> 
                 
-                
+                Hi there! Check the below list to see if you have been matched up with a volunteer. 
+                If not, hang tight, you will be matched with agood samaritan soon! <br />
+
+                {
+                //TDOD: change this to a list of vols
+                profiles && profiles.length !==0 ? (
+                    //(<h4>List of People who are helping you : </h4>)
+                    profiles.map(prof => {
+                        //return (<HelpeeListInVolDashboard key={prof._id} eachHelpee={prof} />)
+                        //return (<HelpeeListInVolDashboard key={prof._id} />)
+                        //return (<li key={prof._id}>{prof.bio}</li>);
+
+                        return (<div className="container" key={prof._id}> 
+                            Name : {prof.name} <br/>
+                            Email : {prof.email} <br/>
+                            Bio : {prof.bio} <br/>
+                            Age : {prof.age} <br/>
+                            City : {prof.city} <br/>
+                        </div>
+                       )
+                    }) 
+                ) : null }
+
                 
             </Fragment> 
                 

@@ -25,7 +25,6 @@ export const VOL_PROFILE_ERROR = 'VOL_PROFILE_ERROR';
 export const VOL_CLEAR_PROFILE = 'VOL_CLEAR_PROFILE';
 
 ////
-
 export const GET_HELPEE_LIST = 'GET_HELPEE_LIST';
 export const GET_HELPEE_LIST_ERROR = 'GET_HELPEE_LIST_ERROR';
 
@@ -33,6 +32,12 @@ export const GET_HELPEE_LIST_ERROR = 'GET_HELPEE_LIST_ERROR';
 // accepted list
 export const ACCEPT_HELPEE_LIST = 'ACCEPT_HELPEE_LIST';
 export const ACCEPT_HELPEE_LIST_ERROR = 'ACCEPT_HELPEE_LIST_ERROR';
+
+
+/// helpee profile
+export const GET_VOL_LIST = 'GET_VOL_LIST';
+export const GET_VOL_LIST_ERROR = 'GET_HELPEE_LIST_ERROR';
+
 
 
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import { logoutVol } from '../../actions/auth_vol';
-//import { getVolList } from '../../actions/auth';
+import { getVolList } from '../../actions/get_vol_list';
 import { getHelpeeList } from '../../actions/get_helpee_list';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVol, getHelpeeList }) => {
@@ -16,12 +16,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVo
                 <Link to='/helpee_dashboard'></Link>
                 <i className='fas fa-user' /> { }
                 <span className='hide-sm'>Edit Profile</span>
-            </li>
-            <li>
-                <a onClick={logout} href='#!'>
-                <i className='fas fa-user' /> { }
-                <span className='hide-sm'>Get Vol List</span>
-                </a>
             </li>
             <li>
                 <a onClick={logout} href='#!'>
