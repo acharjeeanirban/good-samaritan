@@ -57,7 +57,7 @@ const Login_Volunteer = ({ loginVol, isAuthenticated }) => {
 				<input type="submit" className="btn btn-primary" value="Login" />
 			</form>
 			<p className="my-1">
-				Don't have an account? <Link to="/register_vol">Register</Link>
+				Don't have an account? <Link to="/register_volunteer">Register</Link>
 			</p>
 		</Fragment>
 	);

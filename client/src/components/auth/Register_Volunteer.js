@@ -82,7 +82,7 @@ const Register_Volunteer = ({ setAlert, registerVol, isAuthenticated }) => {
 				<input type="submit" className="btn btn-primary" value="Register" />
 			</form>
 			<p className="my-1">
-				Already have an account? <Link to="/login_helpee">Sign in</Link>
+				Already have an account? <Link to="/login_volunteer">Sign in</Link>
 			</p>
 		</Fragment>
 	);
