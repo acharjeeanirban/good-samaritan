@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://aniracha_007:jhhWIP01aV4dX6HG@goodsamaritan-jq1cu.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken1234"
+}
