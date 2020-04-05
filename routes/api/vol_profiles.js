@@ -16,33 +16,13 @@ router.get('/me', auth, async (req, res) => {
 
     try {
         console.log("TADA bazinga 1, in vol register : id " + req.user.id);
-        // const profile = await HelpUserProfile.findOne({user : req.user.id}).populate('HelpUser',
-        // ['name']);
 
         const profile = await VolUserProfile.findOne({
             user: req.user.id
-            //user: '5e800de72903633889fb3589'
         });
-
-        // const profile_user = await VolUser.findOne({
-        //     _id: req.user.id
-        //     //user: '5e800de72903633889fb3589'
-        // });
 
         console.log("TADA bazinga 2");
         console.log(profile);
-        //console.log(profile_user);
-        //res.json(profile.populate('HelpUser', ['name']));
-
-        ///
-
-        // profile.city = profile_user['city'];
-
-        // console.log('TTTTT bazinga');
-        // console.log(profile);
-        // console.log('TTTTT bazinga');
-
-        ///
 
         // TODO: [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
         // needs fix
@@ -67,7 +47,6 @@ router.get('/me', auth, async (req, res) => {
                 console.log('***************************** ' + helpee_id);
                 helpee_profile = await HelpeeUserProfile.findOne({
                     _id: helpee_id
-                    //user: '5e800de72903633889fb3589'
                 });
                 console.log('***************************** bazinga' );
                 console.log(helpee_profile);
@@ -76,17 +55,11 @@ router.get('/me', auth, async (req, res) => {
             }
 
         }
-
-        console.log('*****************************');
-        console.log(helpee_profile);
-        console.log('*****************************');
         
         const combined = {
             vol_profile: profile,
             helpee_profiles: helpee_profiles
         };
-
-        ///
 
         return res.json(combined);
 
@@ -95,7 +68,7 @@ router.get('/me', auth, async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server error');
     }
-    //res.send('help profiles route');
+
 })
 
 // @route POST /api/vol_profiles

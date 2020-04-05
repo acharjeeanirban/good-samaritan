@@ -6,22 +6,18 @@ import { getCurrentVolProfile } from '../../actions/vol_profile';
 import { getHelpeeList } from '../../actions/get_helpee_list';
 import { connect } from 'react-redux';
 
-//const HelpeeListInVolDashboard = (props) => {
 const HelpeeListInVolDashboard = ({ acceptHelpee, getHelpeeList, getCurrentVolProfile, profile : { profiles, loading } }) => {
 
     useEffect(() => {
         getCurrentVolProfile();
         getHelpeeList();
-    }, []);
+    }, [loading]);
     
     return (
         <Fragment>
             New List of people who need help  : {
                 profiles && profiles.length !==0 ? (
                     profiles.map(prof => {
-                        //return (<HelpeeListInVolDashboard key={prof._id} eachHelpee={prof} />)
-                        //return (<HelpeeListInVolDashboard key={prof._id} />)
-                        //return (<li key={prof._id}>{prof.bio}</li>);
 
                         return (<div className="container" key={prof._id}> 
                             Name : {prof.name} <br/>
@@ -41,12 +37,6 @@ const HelpeeListInVolDashboard = ({ acceptHelpee, getHelpeeList, getCurrentVolPr
         </Fragment>
     )
 }
-
-// HelpeeListInVolDashboard.propTypes = {
-//     //getCurrentVolProfile: PropTypes.func.isRequired,
-//     auth: PropTypes.object.isRequired,
-//     profile: PropTypes.object.isRequired
-// };
 
 const mapStateToProps = state => ({
     //auth: state.auth_vol,

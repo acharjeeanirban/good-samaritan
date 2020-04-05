@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 import { getCurrentVolProfile } from '../../actions/vol_profile';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
-
-import { acceptHelpee } from '../../actions/accept_helpee';
  
 import HelpeeListInVolDashboard from './HelpeeListInVolDashboard';
 
-const VolDashboard = ({ getCurrentVolProfile, acceptHelpee, auth: { user }, profile: { profile, loading, profiles, my_accepted_list } }) => {
+const VolDashboard = ({ getCurrentVolProfile, auth: { user }, profile: { profile, loading, profiles, my_accepted_list } }) => {
 
     useEffect(() => {
         getCurrentVolProfile();
@@ -38,10 +36,6 @@ const VolDashboard = ({ getCurrentVolProfile, acceptHelpee, auth: { user }, prof
                             Need help with : {prof.help_needed_with} <br/>
                             Age : {prof.age} <br/>
                             City : {prof.city} <br/>
-                            {/* <div className="buttons">
-                                
-                                <button type="button" onClick={e => {acceptHelpee(prof._id)}} className="btn btn-primary">Accept</button>
-                            </div> */}
                         </div>
                        )
                     }) 
@@ -64,7 +58,6 @@ const VolDashboard = ({ getCurrentVolProfile, acceptHelpee, auth: { user }, prof
 
 VolDashboard.propTypes = {
     getCurrentVolProfile: PropTypes.func.isRequired,
-    acceptHelpee: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
 };
@@ -74,4 +67,4 @@ const mapStateToProps = state => ({
     profile: state.vol_profile,
 });
 
-export default connect(mapStateToProps , { getCurrentVolProfile, acceptHelpee })(VolDashboard)
+export default connect(mapStateToProps , { getCurrentVolProfile })(VolDashboard)

@@ -6,6 +6,16 @@ import { createVolProfile, getCurrentVolProfile } from '../../actions/vol_profil
 
 const EditVolProfile = ({ profile : { profile, loading }, createVolProfile, getCurrentVolProfile, history }) => {
 
+    // if (profile === null) {
+    //     return (
+
+    //         <Fragment>
+
+    //             Please create your Porfile first to edit/view it.
+    //         </Fragment>
+    //     )
+    // }
+
     const [formData, setFormData] = useState({
 
         bio: '',
@@ -20,16 +30,19 @@ const EditVolProfile = ({ profile : { profile, loading }, createVolProfile, getC
     useEffect(() => {
         getCurrentVolProfile();
 
-        setFormData({
-            bio: loading || !profile.bio ?  '' : profile.bio,
-            age: loading || !profile.age ?  '' : profile.age,
-            phone: loading || !profile.phone ?  '' : profile.phone,
-            country: loading || !profile.country ?  '' : profile.country,
-            province: loading || !profile.province ?  '' : profile.province,
-            city: loading || !profile.city ?  '' : profile.city,
-            zipcode: loading || !profile.zipcode ?  '' : profile.zipcode,
-            
-        });
+        if (profile !== null) {
+            setFormData({
+                bio: loading || !profile.bio ?  '' : profile.bio,
+                age: loading || !profile.age ?  '' : profile.age,
+                phone: loading || !profile.phone ?  '' : profile.phone,
+                country: loading || !profile.country ?  '' : profile.country,
+                province: loading || !profile.province ?  '' : profile.province,
+                city: loading || !profile.city ?  '' : profile.city,
+                zipcode: loading || !profile.zipcode ?  '' : profile.zipcode,
+                
+            });
+        }
+
     }, [loading]);
 
 

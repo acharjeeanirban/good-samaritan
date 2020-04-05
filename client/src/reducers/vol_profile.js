@@ -50,12 +50,12 @@ export default function(state=initialState, action) {
             const new_stuff = state.profiles.filter(e => {
                 return e._id !== payload.user_profiles._id;
             });
-
+            state.my_accepted_list.push(payload.user_profiles);
             return {
                 ...state,
                 profile: payload.vol_profiles,
                 profiles: new_stuff,
-                my_accepted_list: payload.user_profiles,
+                //my_accepted_list: state.my_accepted_list.push(payload.user_profiles),
                 loading: false
             };
         default:

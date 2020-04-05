@@ -89,12 +89,9 @@ router.get('/list', auth, async (req, res) => {
 
     try {
         console.log("TADA list  bazinga 1");
-        // const profile = await HelpUserProfile.findOne({user : req.user.id}).populate('HelpUser',
-        // ['name']);
 
         const vol_profile = await VolUserProfile.findOne({
             user: req.user.id
-            //user: '5e800de72903633889fb3589'
         });
 
         console.log('cityyyyyyy : banzing : ' + vol_profile.city);
@@ -102,13 +99,11 @@ router.get('/list', auth, async (req, res) => {
         const user_profiles = await HelpUserProfile.find({
             city: vol_profile.city,
             current_status: 'NOT_ASSIGNED'
-            //user: '5e800de72903633889fb3589'
         });
         
         console.log("TADA list  bazinga 2");
         console.log(vol_profile);
         console.log(user_profiles);
-        //res.json(profile.populate('HelpUser', ['name']));
 
         // TODO: [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
         // needs fix

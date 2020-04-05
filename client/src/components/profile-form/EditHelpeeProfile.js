@@ -22,21 +22,20 @@ const EditHelpeeProfile = ({ profile : { profile, loading } , createProfile, get
 
     useEffect(() => {
         getCurrentProfile();
-
-        setFormData({
-            bio: loading || !profile.bio ?  '' : profile.bio,
-            age: loading || !profile.age ?  '' : profile.age,
-            phone: loading || !profile.phone ?  '' : profile.phone,
-            country: loading || !profile.country ?  '' : profile.country,
-            province: loading || !profile.province ?  '' : profile.province,
-            city: loading || !profile.city ?  '' : profile.city,
-            zipcode: loading || !profile.zipcode ?  '' : profile.zipcode,
-            emergency_contact: loading || !profile.emergency_contact ?  '' : profile.emergency_contact,
-            emergency_contact_num: loading || !profile.emergency_contact_num ?  '' : profile.emergency_contact_num,
-            help_needed_with: loading || !profile.help_needed_with ?  '' : profile.help_needed_with,
-
-            
-        });
+        if (profile !== null) {
+            setFormData({
+                bio: loading || !profile.bio ?  '' : profile.bio,
+                age: loading || !profile.age ?  '' : profile.age,
+                phone: loading || !profile.phone ?  '' : profile.phone,
+                country: loading || !profile.country ?  '' : profile.country,
+                province: loading || !profile.province ?  '' : profile.province,
+                city: loading || !profile.city ?  '' : profile.city,
+                zipcode: loading || !profile.zipcode ?  '' : profile.zipcode,
+                emergency_contact: loading || !profile.emergency_contact ?  '' : profile.emergency_contact,
+                emergency_contact_num: loading || !profile.emergency_contact_num ?  '' : profile.emergency_contact_num,
+                help_needed_with: loading || !profile.help_needed_with ?  '' : profile.help_needed_with,
+            });
+        }
     }, [loading]);
 
     const {
