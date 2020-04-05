@@ -118,8 +118,6 @@ const EditHelpeeProfile = ({ profile : { profile, loading } , createProfile, get
                     </select>
                     <small className="form-text">Give us an idea of what you need help with</small>
                 </div>
-                <input type="submit" className="btn btn-primary my-1" />
-                <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
             </form>
         </Fragment>
     )

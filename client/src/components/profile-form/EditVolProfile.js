@@ -91,8 +91,6 @@ const EditVolProfile = ({ profile : { profile, loading }, createVolProfile, getC
                     <input type="text" placeholder="Zipcode" name="zipcode" required value={zipcode} onChange={e => onChange(e)}/>
                     <small className="form-text">Zipcode</small>
                 </div>
-                <input type="submit" className="btn btn-primary my-1" />
-                <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
             </form>
         </Fragment>
     )

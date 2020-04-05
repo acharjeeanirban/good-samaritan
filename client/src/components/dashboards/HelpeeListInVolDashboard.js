@@ -16,7 +16,7 @@ const HelpeeListInVolDashboard = ({ acceptHelpee, getHelpeeList, getCurrentVolPr
     
     return (
         <Fragment>
-            List of people who your are already helping  : {
+            New List of people who need help  : {
                 profiles && profiles.length !==0 ? (
                     profiles.map(prof => {
                         //return (<HelpeeListInVolDashboard key={prof._id} eachHelpee={prof} />)

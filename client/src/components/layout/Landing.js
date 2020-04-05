@@ -12,7 +12,7 @@ const Landing = ({ isAuthenticated }) => {
         <section className="landing">
             <div className="dark-overlay">
                 <div className="landing-inner">
-                    <h1 className="x-large">Your good samaritan</h1>
+                    <h1 className="x-large">Your cool samaritan</h1>
                     <p className="lead">
                         In this time of crisis, i.e COVID-19, 
                         members of our society can feel very vulnerable. Our elderly are most at risk. 
