@@ -18,7 +18,8 @@ export default function(state=initialState, action) {
         case VOL_GET_PROFILE:
             return {
                 ...state,
-                profile: payload,
+                profile: payload.vol_profile,
+                my_accepted_list: payload.helpee_profiles,
                 loading: false
             };
         case VOL_PROFILE_ERROR:

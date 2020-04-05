@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createVolProfile } from '../../actions/vol_profile';
 
+// TODO: fix auto populate country/state/city
+
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+
 const CreateVolProfile = ({ createVolProfile, history }) => {
     const [formData, setFormData] = useState({
 
@@ -58,7 +62,7 @@ const CreateVolProfile = ({ createVolProfile, history }) => {
                     <small className="form-text">Phone</small>
                 </div>
                 <div className="form-group">
-                    <input type="text" placeholder="Country" name="country" required value={country} onChange={e => onChange(e)}/>
+                    <input type="text" placeholder="Country" name="country" value={country} onChange={e => onChange(e)}/>
                     <small className="form-text">Country</small>
                 </div>
                 <div className="form-group">

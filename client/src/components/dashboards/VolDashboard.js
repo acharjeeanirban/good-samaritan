@@ -9,7 +9,7 @@ import { acceptHelpee } from '../../actions/accept_helpee';
  
 import HelpeeListInVolDashboard from './HelpeeListInVolDashboard';
 
-const VolDashboard = ({ getCurrentVolProfile, acceptHelpee, auth: { user }, profile: { profile, loading, profiles } }) => {
+const VolDashboard = ({ getCurrentVolProfile, acceptHelpee, auth: { user }, profile: { profile, loading, profiles, my_accepted_list } }) => {
 
     useEffect(() => {
         getCurrentVolProfile();
@@ -24,9 +24,9 @@ const VolDashboard = ({ getCurrentVolProfile, acceptHelpee, auth: { user }, prof
         { profile !== null ? 
             (<Fragment>
 
-            List of people who need help  : {
-                profiles && profiles.length !==0 ? (
-                    profiles.map(prof => {
+            List of people who your are already helping  : {
+                my_accepted_list && my_accepted_list.length !==0 ? (
+                    my_accepted_list.map(prof => {
                         //return (<HelpeeListInVolDashboard key={prof._id} eachHelpee={prof} />)
                         //return (<HelpeeListInVolDashboard key={prof._id} />)
                         //return (<li key={prof._id}>{prof.bio}</li>);
@@ -38,10 +38,10 @@ const VolDashboard = ({ getCurrentVolProfile, acceptHelpee, auth: { user }, prof
                             Need help with : {prof.help_needed_with} <br/>
                             Age : {prof.age} <br/>
                             City : {prof.city} <br/>
-                            <div className="buttons">
+                            {/* <div className="buttons">
                                 
                                 <button type="button" onClick={e => {acceptHelpee(prof._id)}} className="btn btn-primary">Accept</button>
-                            </div>
+                            </div> */}
                         </div>
                        )
                     }) 

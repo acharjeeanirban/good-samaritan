@@ -6,6 +6,7 @@ const config = require('config');
 const {check, validationResult} = require('express-validator');
 const auth = require('../../middleware/auth');
 const VolUserProfile = require('../../models/Vol_Profile');
+const HelpeeUserProfile = require('../../models/Help_Profile');
 const VolUser = require('../../models/Vol_User');
 
 // @route GET /api/vol_profiles/me
@@ -52,11 +53,42 @@ router.get('/me', auth, async (req, res) => {
             return res.status(400).send('BAZINGA');
         }
 
-        console.log("TADA bazinga 3");
+        //////////// BAZINGA
 
+        let helpee_id = null;
+        let helpee_profiles = [];
+        let helpee_profile = null;
+        /// get list of vols for helpee
+        if (profile.helping_user && profile.helping_user.length > 0) {
 
+            for(i = 0; i < profile.helping_user.length; i++) {
+                let prof = profile.helping_user[i];
+                helpee_id =  prof.helpee_id;
+                console.log('***************************** ' + helpee_id);
+                helpee_profile = await HelpeeUserProfile.findOne({
+                    _id: helpee_id
+                    //user: '5e800de72903633889fb3589'
+                });
+                console.log('***************************** bazinga' );
+                console.log(helpee_profile);
 
-        return res.json(profile);
+                helpee_profiles.push(helpee_profile)
+            }
+
+        }
+
+        console.log('*****************************');
+        console.log(helpee_profile);
+        console.log('*****************************');
+        
+        const combined = {
+            vol_profile: profile,
+            helpee_profiles: helpee_profiles
+        };
+
+        ///
+
+        return res.json(combined);
 
     } catch(err) {
         console.log("TADA bazinga 4");
