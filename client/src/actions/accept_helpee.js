@@ -9,11 +9,7 @@ export const acceptHelpee = (helpee_id) => async dispatch => {
     try {
         const url = '/api/help_profiles/list/' + helpee_id;
         console.log("THE URL : " + url);
-        const res = await axios.get(url);
-
-        console.log('BAZINGA in acceptHelpee --------------------');
-        console.log(res);
-        console.log('BAZINGA in acceptHelpee --------------------');   
+        const res = await axios.get(url);  
 
         dispatch({
             type: ACCEPT_HELPEE_LIST,
