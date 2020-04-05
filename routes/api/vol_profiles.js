@@ -115,8 +115,6 @@ router.post('/', [
         return res.status(400).json({ errors: errors.array() });
     }
 
-    
-
     const {
         bio,
         age,
@@ -147,6 +145,7 @@ router.post('/', [
             console.log(vol_user);
             profileFields.name = vol_user.name;
             profileFields.email = vol_user.email;
+            profileFields.city = profileFields.city.toLowerCase();
             console.log(profileFields);
         }
         let profile = await VolUserProfile.findOne({user: req.user.id});

@@ -195,6 +195,7 @@ router.post('/', [
             console.log(help_user);
             profileFields.name = help_user.name;
             profileFields.email = help_user.email;
+            profileFields.city = profileFields.city.toLowerCase();
             console.log(profileFields);
         }
 
