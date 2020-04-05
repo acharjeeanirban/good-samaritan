@@ -22,12 +22,12 @@ const EditVolProfile = ({ profile : { profile, loading }, createVolProfile, getC
 
         setFormData({
             bio: loading || !profile.bio ?  '' : profile.bio,
-            age: loading || !profile.bio ?  '' : profile.age,
-            phone: loading || !profile.bio ?  '' : profile.phone,
-            country: loading || !profile.bio ?  '' : profile.country,
-            province: loading || !profile.bio ?  '' : profile.province,
-            city: loading || !profile.bio ?  '' : profile.city,
-            zipcode: loading || !profile.bio ?  '' : profile.zipcode
+            age: loading || !profile.age ?  '' : profile.age,
+            phone: loading || !profile.phone ?  '' : profile.phone,
+            country: loading || !profile.country ?  '' : profile.country,
+            province: loading || !profile.province ?  '' : profile.province,
+            city: loading || !profile.city ?  '' : profile.city,
+            zipcode: loading || !profile.zipcode ?  '' : profile.zipcode,
             
         });
     }, [loading]);

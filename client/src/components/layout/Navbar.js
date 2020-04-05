@@ -13,9 +13,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVo
 
         <ul>
             <li>
-                <Link to='/helpee_dashboard'></Link>
                 <i className='fas fa-user' /> { }
-                <span className='hide-sm'>View/Edit Profile</span>
+                <span className='hide-sm'>
+                    <Link to='/edit_helpee_profile'>View/Edit Profile</Link>
+                </span>
             </li>
             <li>
                 <a onClick={logout} href='#!'>
