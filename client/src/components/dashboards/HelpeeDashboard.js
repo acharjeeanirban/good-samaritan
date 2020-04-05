@@ -22,7 +22,7 @@ const HelpeeDashboard = ({ getCurrentProfile, auth: { user }, profile: { profile
             (<Fragment> 
                 
                 Hi there! Check the below list to see if you have been matched up with a volunteer. 
-                If not, hang tight, you will be matched with agood samaritan soon! <br />
+                If not, hang tight, you will be matched with a good samaritan soon! <br />
 
                 {
                 //TDOD: change this to a list of vols
