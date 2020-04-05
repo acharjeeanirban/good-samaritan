@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import me from '../../img/me_50.jpg';
+import me from '../../img/me.jpg';
 
 export const About_Us = () => {
     return (
