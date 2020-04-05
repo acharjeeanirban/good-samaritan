@@ -81,7 +81,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVo
     return (
         <nav className="navbar bg-dark">
                 <h1>
-                    <Link to="#!"><i className="fas fa-code"></i> Cool Samaritan</Link>
+                    <Link to="/"><i className="fas fa-code"></i> Cool Samaritan</Link>
                     
                 </h1>
 

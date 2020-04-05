@@ -3,12 +3,14 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Landing = ({ isAuthenticated }) => {
+const Landing = ({ isAuthenticated_helpee, isAuthenticated_vol }) => {
 
-    if (isAuthenticated) {
+    if (isAuthenticated_helpee) {
         return <Redirect to='/helpee_dashboard' />
+    } else if (isAuthenticated_vol) {
+        return <Redirect to='/vol_dashboard' />
     }
-    return (
+     return (
         <section className="landing">
             <div className="dark-overlay">
                 <div className="landing-inner">
@@ -29,10 +31,12 @@ const Landing = ({ isAuthenticated }) => {
     )
 };
 Landing.propTypes = {
-    isAuthenticated: PropTypes.bool
+    isAuthenticated_vol: PropTypes.bool,
+    isAuthenticated_helpee: PropTypes.bool
 }
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated_vol: state.auth_vol.isAuthenticated,
+    isAuthenticated_helpee: state.auth.isAuthenticated,
 })
 
 export default connect(mapStateToProps)(Landing);
