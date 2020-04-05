@@ -19,6 +19,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import VolPrivateRoute from './components/routing/VolPrivateRoute';
 import CreateHelpeeProfile from './components/profile-form/CreateHelpeeProfile';
 import CreateVolProfile from './components/profile-form/CreateVolProfile';
+import EditVolProfile from './components/profile-form/EditVolProfile';
 
 import './App.css';
 
@@ -52,6 +53,7 @@ const App = () => {
             <PrivateRoute exact path="/create_helpee_profile" component={CreateHelpeeProfile}></PrivateRoute>
             <VolPrivateRoute exact path="/vol_dashboard" component={VolDashboard}></VolPrivateRoute>
             <VolPrivateRoute exact path="/create_vol_profile" component={CreateVolProfile}></VolPrivateRoute>
+            <VolPrivateRoute exact path="/edit_vol_profile" component={EditVolProfile}></VolPrivateRoute>
           </Switch>
         </section>
       </Fragment>

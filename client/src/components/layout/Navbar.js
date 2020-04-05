@@ -15,7 +15,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVo
             <li>
                 <Link to='/helpee_dashboard'></Link>
                 <i className='fas fa-user' /> { }
-                <span className='hide-sm'>Edit Profile</span>
+                <span className='hide-sm'>View/Edit Profile</span>
             </li>
             <li>
                 <a onClick={logout} href='#!'>
@@ -29,9 +29,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVo
 
         <ul>
             <li>
-                <Link to='/vol_dashboard'></Link>
                 <i className='fas fa-user' /> { }
-                <span className='hide-sm'>Edit Profile</span>
+                <span className='hide-sm'>
+                    <Link to='/edit_vol_profile'>View/Edit Profile</Link>
+                </span>
             </li>
             <li>
                 <a onClick={getHelpeeList} href='#!'>
@@ -51,7 +52,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVo
     const guestLinks = (
         <ul>
             <li>
-                <Link to="/login_helpee">Login</Link>
+                <Link to="/login_helpee">Helpee Login</Link>
             </li>
             <li>
                 <Link to="/login_volunteer">Volunteer Login</Link>
