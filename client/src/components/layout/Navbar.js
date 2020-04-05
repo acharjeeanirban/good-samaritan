@@ -36,10 +36,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, auth_vol, logout, logoutVo
                 </span>
             </li>
             <li>
-                <a onClick={getHelpeeList} href='#!'>
+                {/* <a onClick={getHelpeeList} href='#!'> */}
                 <i className='fas fa-user' /> { }
-                <span className='hide-sm'>Get New Helpee List</span>
-                </a>
+                <span className='hide-sm'>
+                    <Link to='/get_new_helpee_profiles'>Get New Helpee List</Link>
+                </span>
             </li>
             <li>
                 <a onClick={logoutVol} href='#!'>

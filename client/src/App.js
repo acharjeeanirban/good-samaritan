@@ -23,6 +23,7 @@ import EditVolProfile from './components/profile-form/EditVolProfile';
 import EditHelpeeProfile from './components/profile-form/EditHelpeeProfile';
 
 import './App.css';
+import HelpeeListInVolDashboard from './components/dashboards/HelpeeListInVolDashboard';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -56,6 +57,7 @@ const App = () => {
             <VolPrivateRoute exact path="/vol_dashboard" component={VolDashboard}></VolPrivateRoute>
             <VolPrivateRoute exact path="/create_vol_profile" component={CreateVolProfile}></VolPrivateRoute>
             <VolPrivateRoute exact path="/edit_vol_profile" component={EditVolProfile}></VolPrivateRoute>
+            <VolPrivateRoute exact path="/get_new_helpee_profiles" component={HelpeeListInVolDashboard}></VolPrivateRoute>
             
           </Switch>
         </section>
