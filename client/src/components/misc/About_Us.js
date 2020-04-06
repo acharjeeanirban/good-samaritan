@@ -40,8 +40,8 @@ export const About_Us = () => {
 
                 <br></br>
                 <h4>If you wanna get in touch with me..</h4>
-                I live in the beautiful city of North vancouver, British Columbia, Canada. I love coding, nature, dogs, coffee. If you have suggestion regarding the website 
-                or want to help out in any form please reach out to me @ acharjeeanirban7@gmail.com
+                I live in the beautiful city of North Vancouver, British Columbia, Canada. I love coding, nature, dogs, coffee. If you have suggestion regarding the website 
+                or want to help out in any form please reach out to me at acharjeeanirban7@gmail.com
             </p>
         </Fragment>
 

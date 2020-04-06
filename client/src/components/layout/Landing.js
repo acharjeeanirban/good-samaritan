@@ -18,8 +18,8 @@ const Landing = ({ isAuthenticated_helpee, isAuthenticated_vol }) => {
                     <p className="lead">
                         In this time of crisis, i.e COVID-19, 
                         members of our society can feel very vulnerable. Our elderly are most at risk. 
-                        This website serves as a platform for the elderly to register for help and for able 
-                        and healthy people in our society to come forward to help the vulnerable.
+                        This website serves as a platform for the vulnerable (elderly) to register for help and for able 
+                        and healthy people in our society to come forward and help the vulnerable.
                     </p>
                     <div className="buttons">
                         <Link to="/register_helpee" className="btn btn-primary">Sign Up as someone who needs help</Link>
