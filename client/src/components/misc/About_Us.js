@@ -19,8 +19,8 @@ export const About_Us = () => {
                 <br></br>
                 <h4>If you need help</h4>
                 <br></br>
-                If you are a person who needs help with groceries or walk your dog etc please sign up and create a profile.
-                Once a volunteer in your city has accepted your profile, you will be able to see that person's information
+                If you are a person who needs help with groceries or walking your dog etc please sign up and create a profile.
+                Once a volunteer in your city has accepted your profile, you will be able to see the volunteer's information
                 on your dashboard.
 
                 <br></br>
@@ -46,9 +46,9 @@ export const About_Us = () => {
                 <br></br>
                 <br></br>
                 <h4>Disclaimer:</h4>
-                
-                 None of the users personal information is distributed to anyone in any form. This is purely 
-                a non-profit venture. However please take care not to reuse passwords.
+
+                None of the users personal information is distributed to anyone in any form. This is purely 
+                a non-profit venture.
 
             </p>
         </Fragment>
