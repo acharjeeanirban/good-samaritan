@@ -4,7 +4,7 @@ import me from '../../img/me.jpg';
 export const About_Us = () => {
     return (
         <Fragment>
-            <img src={me}></img>
+            <img src={me} style={{width:'30%', height:'30%'}}></img>
             <p className="lead"> 
                 
                 <br></br>
