@@ -42,6 +42,14 @@ export const About_Us = () => {
                 <h4>If you wanna get in touch with me..</h4>
                 I live in the beautiful city of North Vancouver, British Columbia, Canada. I love coding, nature, dogs, coffee. If you have suggestion regarding the website 
                 or want to help out in any form please reach out to me at acharjeeanirban7@gmail.com
+
+                <br></br>
+                <br></br>
+                <h4>Disclaimer:</h4>
+                
+                 None of the users personal information is distributed to anyone in any form. This is purely 
+                a non-profit venture. However please take care not to reuse passwords.
+
             </p>
         </Fragment>
 
