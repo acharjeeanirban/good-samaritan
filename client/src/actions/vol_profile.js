@@ -6,7 +6,7 @@ import { VOL_GET_PROFILE, VOL_PROFILE_ERROR } from './types';
 export const getCurrentVolProfile = () => async dispatch => {
 
     try {
-        console.log('QQQQQQQQQQQQQQQQQQQQQQQQQ');
+        //console.log('QQQQQQQQQQQQQQQQQQQQQQQQQ');
         const res = await axios.get('/api/vol_profiles/me');
 
         dispatch({

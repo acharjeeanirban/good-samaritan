@@ -26,7 +26,7 @@ const Login_Volunteer = ({ loginVol, isAuthenticated }) => {
 
 	//Redirect if logged in
 	if (isAuthenticated) {
-		console.log('TTTTTTTTTTTTTTTTT');
+		//console.log('TTTTTTTTTTTTTTTTT');
 		//return <Fragment>sjdhgfjshgkhdfkgj : bazinga</Fragment>
 		return <Redirect to='/vol_dashboard' />
 	}

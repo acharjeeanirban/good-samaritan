@@ -8,16 +8,16 @@ import setAuthToken from '../utils/setAuthToken';
 export const loadVol = () => async dispatch => {
 
     if (localStorage.token) {
-        console.log(" token found");
+        //console.log(" token found");
         setAuthToken(localStorage.token);
     } else {
-        console.log(" token not found");
+        //console.log(" token not found");
     }
 
     try {
-        console.log('QQQ 1');
+        //console.log('QQQ 1');
         const res = await axios.get('/api/auth/vol');
-        console.log('QQQ 2');
+        //console.log('QQQ 2');
 
         dispatch({
             type: VOL_LOADED,
@@ -74,10 +74,10 @@ export const loginVol = (email, password) => async dispatch => {
     const body = JSON.stringify({ email, password });
 
     try {
-        console.log('-~~~~~~~~~~~~~ BAZINGA')
+        //console.log('-~~~~~~~~~~~~~ BAZINGA')
         const res = await axios.post('/api/auth/vol', body, config);
-        console.log(res.data);
-        console.log('Login successful');
+        //console.log(res.data);
+        //console.log('Login successful');
         dispatch({
             type: VOL_LOGIN_SUCCESS,
             payload: res.data
@@ -86,8 +86,8 @@ export const loginVol = (email, password) => async dispatch => {
         dispatch(loadVol());
 
     } catch (err) {
-        console.log('bazinga');
-        console.log(err)
+        //console.log('bazinga');
+        //console.log(err)
         const errors = err.response.data.errors;
         if (errors) {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));

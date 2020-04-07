@@ -36,8 +36,8 @@ export default function(state=initialState, action) {
                 loading:false
             };
         case GET_HELPEE_LIST:
-            console.log('I AM ANIRBAN : skdjgfasdgfkagsdkfjhskdjf');
-            console.log(payload);
+            //console.log('I AM ANIRBAN : skdjgfasdgfkagsdkfjhskdjf');
+            //console.log(payload);
             return {
                 ...state,
                 profile: payload.vol_profile,
@@ -45,8 +45,8 @@ export default function(state=initialState, action) {
                 loading: false
             }
         case ACCEPT_HELPEE_LIST:
-            console.log('I AM ANIRBAN : ACCEPT_HELPEE_LIST');
-            console.log(payload);
+            //console.log('I AM ANIRBAN : ACCEPT_HELPEE_LIST');
+            //console.log(payload);
             const new_stuff = state.profiles.filter(e => {
                 return e._id !== payload.user_profiles._id;
             });

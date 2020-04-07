@@ -8,7 +8,7 @@ module.exports = function(req, res, next) {
 
     //check if no token
     if (!token) {
-        console.log("IN AUTH MIDDLEWARE");
+        //console.log("IN AUTH MIDDLEWARE");
         res.status(401).json({msg: 'No token, authorization denied'});
     }
 

@@ -29,7 +29,7 @@ export default function(state = initialState, action) {
         };
     case VOL_REGISTER_SUCCESS:
     case VOL_LOGIN_SUCCESS:
-        console.log('IN REDUCER');
+        //console.log('IN REDUCER');
         localStorage.setItem('token', payload.token);
         return {
             ...state,
@@ -42,7 +42,7 @@ export default function(state = initialState, action) {
     case VOL_LOGIN_FAIL:
     case VOL_LOGOUT:    
         localStorage.removeItem('token');
-        console.log('-------- bazinga in vol logout--------')
+        //console.log('-------- bazinga in vol logout--------')
         return {
             ...state,
             token: null,

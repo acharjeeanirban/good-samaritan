@@ -9,9 +9,9 @@ export const getVolList = () => async dispatch => {
     try {
         const res = await axios.get('/api/help_profiles/list');
 
-        console.log('BAZINGA in getHelpeeList --------------------');
-        console.log(res);
-        console.log('BAZINGA in getHelpeeList --------------------');   
+        //console.log('BAZINGA in getHelpeeList --------------------');
+        //console.log(res);
+        //console.log('BAZINGA in getHelpeeList --------------------');   
 
         dispatch({
             type: GET_VOL_LIST,

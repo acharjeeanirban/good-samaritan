@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const setAlert = (msg, alertType, timeout = 5000) =>  dispatch => {
     const id = uuidv4();
-    console.log('hello bazinga');
-    console.log(id);
+    //console.log('hello bazinga');
+    //console.log(id);
     
     dispatch({
         type: SET_ALERT,

@@ -33,12 +33,12 @@ const Register_Volunteer = ({ setAlert, registerVol, isAuthenticated }) => {
 
 	}
 
-	console.log(" client reg before isAuth check : bazinga");
+	//console.log(" client reg before isAuth check : bazinga");
 	//Redirect if logged in
 	if (isAuthenticated) {
 		return <Redirect to='/vol_dashboard' />
 	}
-	console.log(" client reg after isAuth check");
+	//console.log(" client reg after isAuth check");
 
 	return (
 		<Fragment>

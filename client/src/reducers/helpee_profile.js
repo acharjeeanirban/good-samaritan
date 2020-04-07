@@ -13,7 +13,7 @@ export default function(state=initialState, action) {
 
     switch(type) {
         case GET_PROFILE:
-            console.log('TADADADADADA in GET_PROFILE of helpp, bazinga');
+            //console.log('TADADADADADA in GET_PROFILE of helpp, bazinga');
             return {
                 ...state,
                 //profile: payload,
